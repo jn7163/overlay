@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+    <repo quality="experimental" status="unofficial">
+	<name>havanna</name>
+	<description>Havanna's gentoo overlay</description>
+	<homepage>http://github.com/Havanna/overlay</homepage>
+	<owner type="project">
+	    <email>skykiss_2000@163.com</email>
+	    <name>Havanna</name>
+	</owner>
+	<source type="git">git://github.com/Havanna/overlay.git</source>
+    </repo>
+</repositories>

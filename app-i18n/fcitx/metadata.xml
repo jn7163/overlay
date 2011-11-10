@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<maintainer>
+		<email>skykiss_2000@163.com</email>
+		<name>Havanna</name>
+	</maintainer>
+	<use>
+		<flag name='table'>Enable table IM support for <pkg>fcitx</pkg></flag>
+	</use>
+	<longdescription lang="en">
+		Fcitx ( Free Chinese Input Toy for X ) is a collection of Simplefied Chinese input methods for Linux. It supports Pinyin, QuWei and Table-based input methods.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-libs/glib:2 ~net-libs/libofetion-9999 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 gstreamer? ( media-libs/gstreamer:0.10 ) libnotify? ( x11-libs/libnotify ) networkmanager? ( net-misc/networkmanager dev-libs/dbus-glib ) xscreensaver? ( x11-libs/libXScrnSaver ) dev-util/pkgconfig sys-devel/gettext >=dev-util/cmake-2.6 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/mercurial
+DESCRIPTION=Free and open source implementation of Fetion client based on GTK+2
+EAPI=3
+HOMEPAGE=http://code.google.com/p/ofetion
+IUSE=gstreamer libnotify networkmanager xscreensaver
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 ~net-libs/libofetion-9999 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 gstreamer? ( media-libs/gstreamer:0.10 ) libnotify? ( x11-libs/libnotify ) networkmanager? ( net-misc/networkmanager dev-libs/dbus-glib ) xscreensaver? ( x11-libs/libXScrnSaver )
+SLOT=0
+_eclasses_=base	/usr/portage/eclass	1313989273	cmake-utils	/usr/portage/eclass	1314581472	eutils	/usr/portage/eclass	1315861272	flag-o-matic	/usr/portage/eclass	1313605873	mercurial	/usr/portage/eclass	1312399872	multilib	/usr/portage/eclass	1313679672	portability	/usr/portage/eclass	1285338589	toolchain-funcs	/usr/portage/eclass	1315864873
+_mtime_=1315837273

@@ -1,0 +1,18 @@
+# ChangeLog for media-sound/deadbeef
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*deadbeef-0.5.1-r4 (10 Nov 2011)
+
+  10 Nov 2011; Havanna <skykiss_2000@163.com> -deadbeef-0.5.1-r2.ebuild,
+  +deadbeef-0.5.1-r4.ebuild, +files/ffmpeg.c.new.lavc.patch,
+  files/junklib.c.gb18030.patch:
+  add ffpmeg.c.new.lavc.patch
+
+  31 Oct 2011; Havanna <skykis_2000@163.com> deadbeef-0.5.1-r2.ebuild,
+  +metadata.xml, files/junklib.c.gb18030.patch:
+  update gb18030 patch
+
+  15 Sep 2011; Havanna <Skykiss_2000@163.com> +metadata.xml:
+  add metadata.xml
+

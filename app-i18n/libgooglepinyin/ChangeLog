@@ -1,0 +1,14 @@
+# ChangeLog for app-i18n/libgooglepinyin
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*libgooglepinyin-9999 (30 Sep 2011)
+*libgooglepinyin-0.1.1 (30 Sep 2011)
+
+  30 Sep 2011; Havanna <skykiss_2000@163.com> +libgooglepinyin-0.1.1.ebuild,
+  +libgooglepinyin-9999.ebuild:
+  change libgooglepinyin catalog
+
+  14 Sep 2011; Havanna <skykiss_2000@163.com> +ChangeLog:
+  add ChangeLog file
+
