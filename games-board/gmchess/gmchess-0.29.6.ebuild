@@ -18,7 +18,7 @@ RESTRICT="mirror"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-cpp/gtkmm:2.4
+	dev-cpp/gtkmm:3.0
 	dev-util/intltool"
 
 src_compile() {
