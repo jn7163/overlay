@@ -1,4 +1,4 @@
-# Copyright 1999-20011 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v3
 # $Header: $
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 EGIT_REPO_URI="git://github.com/phus/goagent.git"
-EGIT_BRANCH="1.0"
+EGIT_BRANCH="golang"
 
 RDEPEND="dev-lang/python:2.7[ssl]"
 
