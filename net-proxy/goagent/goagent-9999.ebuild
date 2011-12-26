@@ -42,7 +42,7 @@ pkg_postinst() {
 	elog
 	elog "Usage:"
 	elog "vim /etc/goagent"
-	elog "vim /opt/goagent/server/fetch.py"
+	elog "vim /opt/goagent/server/fetch/fetch.go"
 	elog "vim /opt/goagent/server/app.yaml"
 	elog "cd /opt/goagent/server"
 	elog "python2 appcfg.zip update ./"
