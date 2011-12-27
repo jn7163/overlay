@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 EGIT_REPO_URI="git://github.com/phus/goagent.git"
-EGIT_BRANCH="golang"
+#EGIT_BRANCH="golang"
 
 RDEPEND="dev-lang/python:2.7[ssl]"
 
@@ -42,9 +42,9 @@ pkg_postinst() {
 	elog
 	elog "Usage:"
 	elog "vim /etc/goagent"
-	elog "vim /opt/goagent/server/fetch/fetch.go"
-	elog "vim /opt/goagent/server/app.yaml"
-	elog "cd /opt/goagent/server"
+	elog "vim /opt/goagent/server/golang/fetch/fetch.go"
+	elog "vim /opt/goagent/server/golang/app.yaml"
+	elog "cd /opt/goagent/server/golang"
 	elog "python2 appcfg.zip update ./"
 	elog "/etc/init.d/goagent start|stop|restart"
 }
