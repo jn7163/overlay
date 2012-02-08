@@ -19,7 +19,7 @@ RESTRICT="mirror"
 RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
-	>=app-i18n/fcitx-4.1.2
+	>=app-i18n/fcitx-4.1.1
 	dev-libs/libunique:1
 	dev-util/intltool
 	sys-devel/gettext"
