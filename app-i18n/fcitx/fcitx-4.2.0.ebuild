@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=3
 
 inherit cmake-utils eutils
 
-DESCRIPTION="Free Chinese Input Toy for X. Another Chinese XIM Input Method"
-HOMEPAGE="https://fcitx.googlecode.com"
-SRC_URI="${HOMEPAGE}/files/${P}.tar.bz2
-	${HOMEPAGE}/files/pinyin.tar.gz
-	${HOMEPAGE}/files/table.tar.gz"
+DESCRIPTION="Free Chinese Input Toy of X - Input Method Server for X window system"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+
+SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.bz2
+		http://fcitx.googlecode.com/files/${P}_dict.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -56,10 +56,10 @@ update_gtk3_immodules() {
 	fi
 }
 
-src_prepare() {
-	cp ${DISTDIR}/pinyin.tar.gz ${S}/data || die
-	cp ${DISTDIR}/table.tar.gz ${S}/data/table || die
-}
+#src_prepare() {
+#	cp ${DISTDIR}/pinyin.tar.gz ${S}/data || die
+#	cp ${DISTDIR}/table.tar.gz ${S}/data/table || die
+#}
 
 src_configure() {
 	local mycmakeargs=(
