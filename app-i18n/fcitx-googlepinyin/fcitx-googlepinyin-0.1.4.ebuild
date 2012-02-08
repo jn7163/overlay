@@ -2,23 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=3
 
 inherit cmake-utils
 
-DESCRIPTION="Fcitx Wrapper for googlepinyin"
-HOMEPAGE="https://code.google.com/p/fcitx"
+DESCRIPTION="Fcitx Wrapper for googlepinyin."
+HOMEPAGE="http://code.google.com/p/fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.bz2"
-RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.1.2
-	app-i18n/libgooglepinyin"
+RDEPEND=">=app-i18n/fcitx-4.2.0
+	>=app-i18n/libgooglepinyin-0.1.2"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext"
-
