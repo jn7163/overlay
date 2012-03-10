@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Fcitx Wrapper for sunpinyin"
 HOMEPAGE="https://code.google.com/p/fcitx"
-SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.xz"
 RESTRICT="mirror"
 
 LICENSE="GPL-2"
@@ -16,11 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND=">=app-i18n/fcitx-4.1.2
+RDEPEND=">=app-i18n/fcitx-4.2.1
 	app-i18n/sunpinyin"
 DEPEND="${RDEPEND}
 	dev-util/intltool
-	sys-devel/gettext"
+	app-arch/xz-utils"
 
 src__configure() {
 	local mycmakeargs=(
