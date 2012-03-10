@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 inherit cmake-utils git-2
 
@@ -12,12 +12,12 @@ EGIT_REPO_URI="http://code.google.com/p/fcitx/"
 DESCRIPTION="Free Chinese Input Toy for X. Another Chinese XIM Input Method"
 HOMEPAGE="https://fcitx.googlecode.com"
 SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
-	${HOMEPAGE}/files/table.tar.gz"
+	table? ( ${HOMEPAGE}/files/table.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+cairo +gtk3 +gtk debug opencc +pango qt static-libs +table test"
+IUSE="+cairo debug +gtk +gtk3 opencc +pango qt static-libs table test"
 RESTRICT="mirror"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
@@ -35,9 +35,7 @@ RDEPEND="cairo? ( x11-libs/cairo[X]
 		x11-libs/qt-dbus:4 )
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	app-arch/tar
-	dev-util/intltool
-	sys-devel/gettext"
+	dev-util/intltool"
 
 update_gtk_immodules() {
 	local GTK2_CONFDIR="/etc/gtk-2.0"
@@ -60,7 +58,9 @@ update_gtk3_immodules() {
 
 src_prepare() {
 	cp ${DISTDIR}/pinyin.tar.gz ${S}/data || die
-	cp ${DISTDIR}/table.tar.gz ${S}/data/table || die
+	if use table; then
+		cp ${DISTDIR}/table.tar.gz ${S}/data/table || die
+	fi
 }
 
 src_configure() {
