@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 inherit cmake-utils git-2
 
@@ -21,9 +21,10 @@ RESTRICT="mirror"
 RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
-	>=app-i18n/fcitx-4.1.2
+	>=app-i18n/fcitx-4.2.1
 	dev-libs/libunique:1
 	dev-util/intltool
+	dev-util/pkgconfig
 	sys-devel/gettext"
 
 
