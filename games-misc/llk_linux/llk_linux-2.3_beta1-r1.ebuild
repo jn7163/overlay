@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libpng
-	media-sound/esound
 	x11-libs/gtk+:2"
 RDEPEND="${DEPEND}"
 
