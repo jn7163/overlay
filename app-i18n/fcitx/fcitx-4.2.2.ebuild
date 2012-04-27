@@ -7,8 +7,8 @@ EAPI=3
 inherit cmake-utils
 
 DESCRIPTION="Free Chinese Input Toy of X - Input Method Server for X window system"
-HOMEPAGE="http://fcitx.google.com"
-SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.xz
+HOMEPAGE="http://fcitx.googlecode.com"
+SRC_URI="${HOMEPAGE}/files/${P}.tar.xz
 	${HOMEPAGE}/files/pinyin.tar.gz
 	table? ( ${HOMEPAGE}/files/table.tar.gz )"
 
