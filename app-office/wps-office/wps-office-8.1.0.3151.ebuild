@@ -24,11 +24,11 @@ RDEPEND="
 		x11-libs/libXrender
 		x11-libs/libXext
 		x11-libs/libSM
-		media-libs/fontconfig
-		media-libs/freetype
+		media-libs/fontconfig:1.0
+		media-libs/freetype:2
 		media-libs/jpeg:62
 		media-libs/libmng
-		sys-libs/glibc
+		sys-libs/glibc:2.2
 		sys-devel/gcc
 	)
 	amd64? (
