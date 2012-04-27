@@ -52,16 +52,13 @@ src_unpack() {
 }
 
 src_install() {
-	insinto /usr/bin
-	dobin ${S}/usr/bin/wps
-	dobin ${S}/usr/bin/wpp
-	fperms 0755 /usr/bin/wps
-	fperms 0755 /usr/bin/wpp
-	rm -rf ${S}/usr/bin
+	exeinto /usr/bin
+	exeopts -m0755
+	doexe ${S}/usr/bin/wps
+	doexe ${S}/usr/bin/wpp
 
 	insinto /usr
 	doins -r ${S}/usr/share
-	rm -rf ${S}/usr
 
 	insinto /
 	doins -r ${S}/opt
