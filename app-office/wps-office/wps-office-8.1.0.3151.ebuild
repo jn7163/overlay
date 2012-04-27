@@ -14,7 +14,7 @@ SRC_URI="${PN}_${PV}+wps+wpp~a3_i386.deb"
 LICENSE="WPS-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+corefonts"
 
 RDEPEND="
 	x86? (
@@ -39,6 +39,7 @@ RDEPEND="
 			sys-devel/gcc
 			sys-libs/glibc
 		)
+	corefonts? ( media-fonts/corefonts )
 	)"
 DEPEND="${RDEPEND}
 	sys-devel/binutils"
