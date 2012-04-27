@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit fdo-mime
+inherit fdo-mime font
 
 DESCRIPTION="ngsoft Office is an office productivity suite. This is an ALPHA
 package and provides only Presentation. Use it at your own risk."
@@ -69,6 +69,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	font_pkg_postinst
 	fdo-mime_desktop_database_update
 }
 
