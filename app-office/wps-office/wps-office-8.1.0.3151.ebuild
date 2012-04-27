@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit fdo-mime font gnome2-utils
+inherit fdo-mime font
 
 DESCRIPTION="ngsoft Office is an office productivity suite. This is an ALPHA
 package and provides only Presentation. Use it at your own risk."
@@ -72,10 +72,8 @@ pkg_postinst() {
 	font_pkg_postinst
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
-	{ use gtk || use gnome; } && gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	fdo-mime_desktop_database_update
-	{ use gtk || use gnome; } && gnome2_icon_cache_update
 }
