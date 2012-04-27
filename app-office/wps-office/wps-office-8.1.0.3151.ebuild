@@ -50,13 +50,6 @@ src_unpack() {
 	unpack ./data.tar.gz
 }
 
-#src_install() {
-#	mkdir ${D}/opt
-#	mkdir ${D}/usr
-#	cp -r opt ${D}
-#	cp -r usr ${D}
-#}
-
 src_install() {
 	insinto /usr/bin
 	dobin ${S}/usr/bin/wps
