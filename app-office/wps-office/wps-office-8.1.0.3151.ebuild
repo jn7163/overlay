@@ -65,7 +65,7 @@ src_install() {
 	insinto /
 	doins -r ${S}/opt
 	fperms 0755 /opt/kingsoft/wps-office/office6/wps
-	fperms 0755 /opt/kongsoft/wps-office/office6/wpp
+	fperms 0755 /opt/kingsoft/wps-office/office6/wpp
 }
 
 pkg_postinst() {
