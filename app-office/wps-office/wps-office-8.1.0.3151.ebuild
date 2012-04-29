@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit fdo-mime font
+inherit fdo-mime font unpacker
 
 DESCRIPTION="ngsoft Office is an office productivity suite. This is an ALPHA
 package and provides only Presentation. Use it at your own risk."
@@ -45,11 +45,6 @@ DEPEND="${RDEPEND}
 	sys-devel/binutils"
 
 S=${WORKDIR}
-
-src_unpack() {
-	default_src_unpack
-	unpack ./data.tar.gz
-}
 
 src_install() {
 	exeinto /usr/bin
