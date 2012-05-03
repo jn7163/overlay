@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/python:2.7
+	dev-python/pygtk:2
 	dev-python/python-xlib"
 DEPEND="${RDEPEND}"
 
