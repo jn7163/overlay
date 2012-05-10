@@ -6,15 +6,15 @@ EAPI=3
 
 inherit fdo-mime font unpacker
 
-DESCRIPTION="ngsoft Office is an office productivity suite. This is an ALPHA
-package and provides only Presentation. Use it at your own risk."
-HOMEPAGE="http://www.wps.cn"
-SRC_URI="${PN}_${PV}+wps+wpp~a3_i386.deb"
+DESCRIPTION="NeoShine Office for Linux"
+HOMEPAGE="http://www.nsoffice.cn"
+SRC_URI="${HOMEPAGE}/data/upload/downloadCenter/product/${PN}_${PV}_PER_Lin_B40-43.tar"
+RESTRICT="mirror"
 
-LICENSE="WPS-EULA"
+LICENSE="NSO-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="corefonts"
+IUSE="+corefonts"
 
 RDEPEND="
 	x86? (
