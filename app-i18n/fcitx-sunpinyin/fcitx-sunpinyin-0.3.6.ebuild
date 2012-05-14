@@ -20,6 +20,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.1
 	app-i18n/sunpinyin"
 DEPEND="${RDEPEND}
 	dev-util/intltool
+	sys-devel/gettext
 	app-arch/xz-utils"
 
 src__configure() {
