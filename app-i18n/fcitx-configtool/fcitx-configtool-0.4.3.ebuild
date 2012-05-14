@@ -13,16 +13,24 @@ SRC_URI="${HOMEPAGE}/files/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="gtk2 +gtk3"
 RESTRICT="mirror"
 
 RDEPEND="dev-libs/glib:2
-	x11-libs/gtk+:2"
+	gtk2? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )"
 DEPEND="${RDEPEND}
-	>=app-i18n/fcitx-4.2.1
-	dev-libs/libunique:1
+	>=app-i18n/fcitx-4.2.3
 	dev-util/intltool
 	sys-devel/gettext
 	app-arch/xz-utils"
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake-utils_use_enable gtk GTK2_IM_MODULE ) \
+		$(cmake-utils_use_enable gtk3 GTK3_IM_MODULE )
+	)
+	cmake-utils_src_configure
+}
 
 
