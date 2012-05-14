@@ -15,7 +15,7 @@ SRC_URI="${HOMEPAGE}/files/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cairo debug +gtk +gtk3 opencc +pango qt static-libs table test"
+IUSE="+cairo debug +gtk +gtk3 lua snooper opencc +pango qt snooper static-libs table test"
 RESTRICT="mirror"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
@@ -31,6 +31,7 @@ RDEPEND="cairo? ( x11-libs/cairo[X]
 	opencc? ( app-i18n/opencc )
 	qt? ( x11-libs/qt-gui:4
 		x11-libs/qt-dbus:4 )
+	lua? ( dev-lang/lua )
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	dev-util/intltool
@@ -68,10 +69,12 @@ src_configure() {
 			$(cmake-utils_use_enable debug DEBUG ) \
 			$(cmake-utils_use_enable gtk GTK2_IM_MODULE ) \
 			$(cmake-utils_use_enable gtk3 GTK3_IM_MODULE ) \
+			$(cmake-utils_use_enable lua LUA ) \
 			$(cmake-utils_use_enable opencc OPENCC ) \
 			$(cmake-utils_use_enable pango PANGO ) \
 			$(cmake-utils_use_enable qt QT_IM_MODULE ) \
 			$(cmake-utils_use_enable static-libs STATIC ) \
+			$(cmake-utils_use_enable snooper SNOOPER ) \
 			$(cmake-utils_use_enable table TABLE ) \
 			$(cmake-utils_use_enable test TEST )
 	)
