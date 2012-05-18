@@ -1,0 +1,10 @@
+# ChangeLog for net-im/gtkqq
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gtkqq-9999 (18 May 2012)
+
+  18 May 2012; Havanna <skykiss_2000@163.com> +gtkqq-9999.ebuild,
+  +metadata.xml:
+  add gtkqq
+
