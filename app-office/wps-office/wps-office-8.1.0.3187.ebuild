@@ -7,7 +7,7 @@ EAPI=3
 inherit fdo-mime font unpacker
 
 DESCRIPTION="ngsoft Office is an office productivity suite. This is an ALPHA
-package and provides only Presentation. Use it at your own risk."
+package that provides only Writer and Presentation. Use it at your own risk."
 HOMEPAGE="http://www.wps.cn"
 SRC_URI="${PN}_${PV}+wps+wpp~a4_i386.deb"
 
