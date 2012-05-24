@@ -7,7 +7,7 @@
 		<name>Havanna</name>
 	</maintainer>
 	<longdescription lang="en">
-		ngsoft Office is an office productivity suite. This is an ALPHA package and provides only Presentation. Use it at your own risk.
+		ngsoft Office is an office productivity suite. This is an ALPHA package that provides only Writer and Presentation. Use it at your own risk.
 	</longdescription>
 </pkgmetadata>
 
