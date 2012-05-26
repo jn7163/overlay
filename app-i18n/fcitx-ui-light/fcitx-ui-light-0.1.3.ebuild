@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.1.2
+RDEPEND=">=app-i18n/fcitx-4.2.3
 	x11-libs/libX11
 	media-libs/fontconfig
 	media-libs/freetype:2"

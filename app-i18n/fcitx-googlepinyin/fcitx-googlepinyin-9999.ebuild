@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit cmake-utils git-2
 
-EGIT_REPO_URI="http://code.google.com/p/fcitx.fcitx-googlepinyin/"
+EGIT_REPO_URI="git://github.com/fcitx/fcitx-googlepinyin.git"
 
 DESCRIPTION="Fcitx Wrapper for googlepinyin"
 HOMEPAGE="https://code.google.com/p/fcitx"
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.1.2
+RDEPEND=">=app-i18n/fcitx-4.2.3
 	~app-i18n/libgooglepinyin-${PV}"
 DEPEND="${RDEPEND}
 	dev-util/intltool"

@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 
-RDEPEND=">=app-i18n/fcitx-4.2.1
+RDEPEND=">=app-i18n/fcitx-4.2.3
 	>=app-i18n/libgooglepinyin-0.1.2"
 DEPEND="${RDEPEND}
 	dev-util/intltool

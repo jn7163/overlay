@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit cmake-utils git-2
 
-EGIT_REPO_URI="https://code.google.com/p/fcitx.fcitx-sunpinyin/"
+EGIT_REPO_URI="git://github.com/fcitx/fcitx-sunpinyin.git"
 
 DESCRIPTION="Fcitx Wrapper for sunpinyin"
 HOMEPAGE="https://code.google.com/p/fcitx"

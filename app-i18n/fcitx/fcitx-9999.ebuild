@@ -6,7 +6,7 @@ EAPI="3"
 
 inherit cmake-utils git-2
 
-EGIT_REPO_URI="http://code.google.com/p/fcitx/"
+EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
 #EGIT_REVISION="default"
 
 DESCRIPTION="Free Chinese Input Toy for X. Another Chinese XIM Input Method"
