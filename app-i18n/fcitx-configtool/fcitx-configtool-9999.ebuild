@@ -22,7 +22,6 @@ RDEPEND="dev-libs/glib:2
 	gtk3? ( x11-libs/gtk+:3 )"
 DEPEND="${RDEPEND}
 	>=app-i18n/fcitx-4.2.4
-	dev-libs/libunique:1
 	dev-util/intltool
 	dev-util/pkgconfig
 	sys-devel/gettext"
