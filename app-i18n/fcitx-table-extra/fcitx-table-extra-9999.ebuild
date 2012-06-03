@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 
-RDEPEND=">=app-i18n/fcitx-4.2.3[table]"
+RDEPEND=">=app-i18n/fcitx-4.2.4[table]"
 RDEPEND="${RDEPEND}
 	dev-util/intltool
 	app-arch/xz-utils"
