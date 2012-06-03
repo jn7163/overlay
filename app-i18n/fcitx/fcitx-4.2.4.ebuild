@@ -15,13 +15,14 @@ SRC_URI="${HOMEPAGE}/files/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cairo debug +gtk +gtk3 lua snooper opencc +pango qt snooper static-libs table test"
+IUSE="+cairo debug gir +gtk +gtk3 lua opencc +pango qt snooper static-libs table test"
 RESTRICT="mirror"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
 		pango? ( x11-libs/pango[X] )
 		!pango? ( media-libs/fontconfig ) )
 	sys-apps/dbus
+	gir? ( dev-libs/gobject-introspection )
 	gtk? ( x11-libs/gtk+:2
 		dev-libs/glib:2
 		dev-libs/dbus-glib )
@@ -67,6 +68,7 @@ src_configure() {
 	local mycmakeargs=(
 			$(cmake-utils_use_enable cairo CAIRO ) \
 			$(cmake-utils_use_enable debug DEBUG ) \
+			$(cmake-utils_use_enable gir GIR ) \
 			$(cmake-utils_use_enable gtk GTK2_IM_MODULE ) \
 			$(cmake-utils_use_enable gtk3 GTK3_IM_MODULE ) \
 			$(cmake-utils_use_enable lua LUA ) \

@@ -1,6 +1,12 @@
 # ChangeLog for app-i18n/fcitx
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*fcitx-4.2.4 (03 Jun 2012)
+
+  03 Jun 2012; Havanna <skykiss_2000@163.com> -fcitx-4.1.1.ebuild,
+  +fcitx-4.2.4.ebuild, fcitx-9999.ebuild:
+  version bump to 4.2.4
 
 *fcitx-4.1.2 (06 Oct 2011)
 
