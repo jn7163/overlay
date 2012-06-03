@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND=">=app-i18n/fcitx-4.2.3
+RDEPEND=">=app-i18n/fcitx-4.2.4
 	app-i18n/sunpinyin"
 DEPEND="${RDEPEND}
 	dev-util/intltool

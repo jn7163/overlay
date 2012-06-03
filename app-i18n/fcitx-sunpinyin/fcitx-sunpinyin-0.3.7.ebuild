@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND=">=app-i18n/fcitx-4.2.3
+RDEPEND=">=app-i18n/fcitx-4.2.4
 	app-i18n/sunpinyin"
 DEPEND="${RDEPEND}
 	dev-util/intltool
