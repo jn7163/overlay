@@ -6,7 +6,7 @@ EAPI="3"
 
 inherit cmake-utils git-2
 
-EGIT_REPO_URI="https://github.com/fcitx/fcitx-configtool.git"
+EGIT_REPO_URI="git://github.com/fcitx/fcitx-configtool.git"
 
 DESCRIPTION="A gtk GUI to edit fcitx settings"
 HOMEPAGE="https://fcitx.googlecode.com"
