@@ -17,13 +17,14 @@ SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+cairo debug +gtk +gtk3 opencc +pango qt static-libs table test"
+IUSE="+cairo debug gir +gtk +gtk3 lua opencc +pango qt snooper static-libs table test"
 RESTRICT="mirror"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
 		pango? ( x11-libs/pango[X] )
 		!pango? ( media-libs/fontconfig ) )
 	sys-apps/dbus
+	gir? ( dev-libs/gobject-introspection )
 	gtk? ( x11-libs/gtk+:2
 		dev-libs/glib:2
 		dev-libs/dbus-glib )
@@ -33,6 +34,7 @@ RDEPEND="cairo? ( x11-libs/cairo[X]
 	opencc? ( app-i18n/opencc )
 	qt? ( x11-libs/qt-gui:4
 		x11-libs/qt-dbus:4 )
+	lua? ( dev-lang/lua )
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	dev-util/intltool"
@@ -67,12 +69,15 @@ src_configure() {
 	local mycmakeargs=(
 			$(cmake-utils_use_enable cairo CAIRO ) \
 			$(cmake-utils_use_enable debug DEBUG ) \
+			$(cmake-utils_use_enable gir GIR ) \
 			$(cmake-utils_use_enable gtk GTK2_IM_MODULE ) \
 			$(cmake-utils_use_enable gtk3 GTK3_IM_MODULE ) \
+			$(cmake-utils_use_enable lua LUA ) \
 			$(cmake-utils_use_enable opencc OPENCC ) \
 			$(cmake-utils_use_enable pango PANGO ) \
 			$(cmake-utils_use_enable qt QT_IM_MODULE ) \
 			$(cmake-utils_use_enable static-libs STATIC ) \
+			$(cmake-utils_use_enable snooper Snooper ) \
 			$(cmake-utils_use_enable table TABLE ) \
 			$(cmake-utils_use_enable test TEST )
 	)
