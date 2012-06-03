@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,13 +15,13 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="+gtk3"
 RESTRICT="mirror"
 
 RDEPEND="dev-libs/glib:2
-	x11-libs/gtk+:2"
+	gtk3? ( x11-libs/gtk+:3 )"
 DEPEND="${RDEPEND}
-	>=app-i18n/fcitx-4.2.3
+	>=app-i18n/fcitx-4.2.4
 	dev-libs/libunique:1
 	dev-util/intltool
 	dev-util/pkgconfig
