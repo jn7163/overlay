@@ -7,7 +7,11 @@
 		<name>Havanna</name>
 	</maintainer>
 	<use>
-		<flag name='table'>Enable table IM support for <pkg>fcitx</pkg></flag>
+		<flag name='introspection'>Enable GObject Introspection</flag>
+		<flag name='lua'>Enable Lua support</flag>
+		<flag name='opencc'>Enable OpenCC for Chinese Transform</flag>
+		<flag name='snooper'>Enable Key Snooper for gtk app</flag>
+		<flag name='table'>Enable table IM support for<pkg>fcitx</pkg></flag>
 	</use>
 	<longdescription lang="en">
 		Fcitx ( Free Chinese Input Toy for X ) is a collection of Simplefied Chinese input methods for Linux. It supports Pinyin, QuWei and Table-based input methods.
