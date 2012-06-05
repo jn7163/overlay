@@ -2,8 +2,7 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  03 Jun 2012; Havanna <skykiss_2000@163.com> -fcitx-configtool-0.3.1.ebuild,
-  +fcitx-configtool-0.4.4.ebuild, fcitx-configtool-9999.ebuild:
+  03 Jun 2012; Havanna <skykiss_2000@163.com> +fcitx-configtool-0.4.4.ebuild:
   version bump to 0.4.4
 
 *fcitx-configtool-0.4.4 (03 Jun 2012)

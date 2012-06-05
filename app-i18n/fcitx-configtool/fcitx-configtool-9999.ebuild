@@ -23,7 +23,12 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	>=app-i18n/fcitx-4.2.4
 	dev-util/intltool
-	dev-util/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+	app-arch/xz-utils"
 
-
+src_configure() {
+	local mycmakeargs=(
+		$(cmake-utils_use_enable gtk3 GTK3)
+	)
+	cmake-utils_src_configure
+}
