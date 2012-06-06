@@ -38,6 +38,31 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	app-arch/xz-utils"
 
+gtk_query_immodules_2() {
+	local query_exec="${1}"
+	local gtk_conf="${2}"
+	local gtk_conf_dir=$(dirname "${gtk_conf}")
+
+	einfo "Generating gtk+ immodules/gdk-pixbuf loaders listing:"
+	einfo "-> ${gtk_conf}"
+
+	mkdir -p "${gtk_conf_dir}"
+	local tmp_file=$(mktemp -t tmp.XXXXXXXXXXgtk_query_immodules)
+	if [ -z "${tmp_file}" ]; then
+		ewarn "gtk_query_immodules: cannot create temporary file"
+		return 1
+	fi
+
+	if "${query_exec}" > "${tmp_file}"; then
+		cat "${tmp_file}" > "${gtk_conf}" || \
+			ewarn "Failed to write to ${gtk_conf}"
+	else
+		ewarn "Cannot update gtk.immodules, file generation failed"
+	fi
+	rm "${tmp_file}"
+	return 0
+}
+
 update_gtk_immodules() {
 	local GTK2_CONFDIR="/etc/gtk-2.0"
 	# bug #366889
@@ -46,8 +71,9 @@ update_gtk_immodules() {
 	fi
 	mkdir -p "${EPREFIX}${GTK2_CONFDIR}"
 	if [ -x "${EPREFIX}/usr/bin/gtk-query-immodules-2.0" ]; then
-		"${EPREFIX}/usr/bin/gtk-query-immodules-2.0" > \
-		"${EPREFIX}/${GTK2_CONFDIR}/gtk.immodules"
+		gtk_query_immodules_2 \
+			"${EPREFIX}/usr/bin/gtk-query-immodules-2.0" \
+			"${EPREFIX}${GTK2_CONFDIR}/gtk.immodules"
 	fi
 }
 
