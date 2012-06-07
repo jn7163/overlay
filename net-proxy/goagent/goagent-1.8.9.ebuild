@@ -48,6 +48,6 @@ pkg_postinst() {
 	elog "upload={golang|python|php} python2.6 uploader.zip"
 	elog "/etc/init.d/goagent start|stop|restart"
 	elog
-	elog "you need dev-lang:pyton2.6 to upload"
+	elog "you need dev-lang/pyton:2.6 to upload"
 	elog
 }

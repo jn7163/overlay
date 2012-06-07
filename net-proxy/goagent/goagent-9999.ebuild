@@ -26,12 +26,12 @@ src_prepare() {
 src_install() {
 	insinto "/etc/"
 	newins "${S}/local/proxy.ini" goagent
-	rm "${S}/local/proxy.ini"
+	rm ${S}/*/*.{bat,exe,vbs,dll,manifest,plist,ini} || die
 
 	insinto "/opt/goagent"
-	doins -r "${S}"/local "${S}"/server
+	doins -r "${S}/local" "${S}/server"
 
-	newinitd "${FILESDIR}"/goagent-initd goagent
+	newinitd "${FILESDIR}/goagent-initd" goagent
 	dosym /etc/goagent "/opt/goagent/local/proxy.ini"
 }
 
@@ -45,6 +45,9 @@ pkg_postinst() {
 	elog "vim /opt/goagent/server/golang/fetch/fetch.go"
 	elog "vim /opt/goagent/server/golang/app.yaml"
 	elog "cd /opt/goagent/server"
-	elog "python2 uploader.zip"
+	elog "upload={golang|python|php} python2.6 uploader.zip"
 	elog "/etc/init.d/goagent start|stop|restart"
+	elog
+	elog "you need dev-lang/python:2.6 to upload"
+	elog
 }
