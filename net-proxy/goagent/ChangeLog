@@ -8,6 +8,9 @@
   goagent-9999.ebuild, files/goagent-initd, metadata.xml:
   add goagent-1.8.9.ebuild 
 
+  20 Apr 2012; Yuwei Yu <acevery@gmail.com> goagent-9999.ebuild:
+  Update upload method indication for user.
+
   28 Dec 2011; Havanna <skykis_2000@163.com> goagent-9999.ebuild,
   +metadata.xml, files/goagent-initd:
   branch rollback to 1.0
