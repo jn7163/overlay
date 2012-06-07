@@ -2,36 +2,36 @@
 # Distributed under the terms of the GNU General Public License v3
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 
-inherit git-2
+S="${WORKDIR}/phus-${PN}-5ac8aa8"
 
 DESCRIPTION="A GAE proxy forked from gappproxy/wallproxy"
 HOMEPAGE="https://github.com/phus/goagent"
+SRC_URI="https://github.com/phus/goagent/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-EGIT_REPO_URI="git://github.com/phus/goagent.git"
-EGIT_BRANCH="1.0"
+RESTRICT="mirror"
 
 RDEPEND="dev-lang/python:2.7[ssl]"
 
 src_prepare() {
-	find . -type f -name *.py \
+	find ${S}/local -type f -name *.py \
 	-exec sed -i -re "1s/python2?/python2/" {} \; || die "Failed to sed"
 }
 
 src_install() {
 	insinto "/etc/"
 	newins "${S}/local/proxy.ini" goagent
-	rm "${S}/local/proxy.ini"
+	rm ${S}/*/*.{bat,exe,vbs,dll,manifest,plist,ini} || die
 
 	insinto "/opt/goagent"
-	doins -r "${S}"/local "${S}"/server
+	doins -r "${S}/local" "${S}/server"
 
-	newinitd "${FILESDIR}"/goagent-initd goagent
+	newinitd "${FILESDIR}/goagent-initd" goagent
 	dosym /etc/goagent "/opt/goagent/local/proxy.ini"
 }
 
@@ -45,6 +45,9 @@ pkg_postinst() {
 	elog "vim /opt/goagent/server/golang/fetch/fetch.go"
 	elog "vim /opt/goagent/server/golang/app.yaml"
 	elog "cd /opt/goagent/server"
-	elog "python2 uploader.zip"
+	elog "upload={golang|python|php} python2.6 uploader.zip"
 	elog "/etc/init.d/goagent start|stop|restart"
+	elog
+	elog "you need dev-lang:pyton2.6 to upload"
+	elog
 }
