@@ -34,10 +34,8 @@ RDEPEND="
 		app-emulation/emul-linux-x86-baselibs
 		app-emulation/emul-linux-x86-xlibs
 		app-emulation/emul-linux-x86-compat
-		multilib? (
-			sys-devel/gcc
-			sys-libs/glibc
-		)
+		sys-devel/gcc[multilib]
+		sys-libs/glibc[multilib]
 	corefonts? ( media-fonts/corefonts )
 	)"
 DEPEND="${RDEPEND}
