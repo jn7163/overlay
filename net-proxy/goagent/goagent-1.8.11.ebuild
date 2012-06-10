@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-S="${WORKDIR}/phus-${PN}-b30a699"
+S="${WORKDIR}/phus-${PN}-651030a"
 
 DESCRIPTION="A GAE proxy forked from gappproxy/wallproxy"
 HOMEPAGE="https://github.com/phus/goagent"
