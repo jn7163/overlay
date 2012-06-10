@@ -35,8 +35,14 @@ RDEPEND="cairo? ( x11-libs/cairo[X]
 	lua? ( dev-lang/lua )
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
+	app-arch/tar
+	app-arch/xz-utils
+	app-text/iso-codes
+	app-text/enchant
+	dev-libs/icu
 	dev-util/intltool
-	app-arch/xz-utils"
+	app-arch/xz-utils
+	x11-libs/libxkbfile"
 
 gtk_query_immodules_2() {
 	local query_exec="${1}"

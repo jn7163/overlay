@@ -37,7 +37,13 @@ RDEPEND="cairo? ( x11-libs/cairo[X]
 	lua? ( dev-lang/lua )
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	dev-util/intltool"
+	app-arch/tar
+	app-arch/xz-utils
+	app-text/iso-codes
+	app-text/enchant
+	dev-libs/icu
+	dev-util/intltool
+	x11-libs/libxkbfile"
 
 update_gtk_immodules() {
 	local GTK2_CONFDIR="/etc/gtk-2.0"
