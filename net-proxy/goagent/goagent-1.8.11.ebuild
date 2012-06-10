@@ -45,9 +45,12 @@ pkg_postinst() {
 	elog "vim /opt/goagent/server/golang/fetch/fetch.go"
 	elog "vim /opt/goagent/server/golang/app.yaml"
 	elog "cd /opt/goagent/server"
-	elog "upload={golang|python|php} python2.6 uploader.zip"
+	elog "upload={golang|python|php} python2.7 uploader.zip"
 	elog "/etc/init.d/goagent start|stop|restart"
 	elog
-	elog "you need dev-lang/pyton:2.6 to upload"
+	elog "if you get some error in the uploading,"
+	elog "please upload through other proxy."
+	elog "e.g. 'export https_proxy=127.0.0.1:8087',"
+	elog "and then upload again."
 	elog
 }
