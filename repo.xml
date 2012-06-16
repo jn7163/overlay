@@ -2,13 +2,13 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
     <repo quality="experimental" status="unofficial">
-	<name>havanna</name>
+	<name>Ihavanna</name>
 	<description>Havanna's gentoo overlay</description>
-	<homepage>http://github.com/Havanna/overlay</homepage>
+	<homepage>http://github.com/Ihavanna/overlay</homepage>
 	<owner type="project">
-	    <email>skykiss_2000@163.com</email>
-	    <name>Havanna</name>
+	    <email>admin@ihavanna.org</email>
+	    <name>Ihavanna</name>
 	</owner>
-	<source type="git">git://github.com/Havanna/overlay.git</source>
+	<source type="git">git://github.com/Ihavanna/overlay.git</source>
     </repo>
 </repositories>
