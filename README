@@ -1,4 +1,4 @@
-Ihavanna's gentoo overlay
+Ihavanna organization of the gentoo overlay
 Way:
     1. edit: /etc/layman/layman.cfg
     uncomment the line: "overlay_def : /etc/layman/overlays".
