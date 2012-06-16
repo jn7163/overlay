@@ -3,7 +3,7 @@
 <repositories xmlns="" version="1.0">
     <repo quality="experimental" status="unofficial">
 	<name>Ihavanna</name>
-	<description>Havanna's gentoo overlay</description>
+	<description>IHavanna's gentoo overlay</description>
 	<homepage>http://github.com/Ihavanna/overlay</homepage>
 	<owner type="project">
 	    <email>admin@ihavanna.org</email>
