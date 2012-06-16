@@ -1,9 +1,0 @@
-Title: overlay havanna  default
-Author: Havanna <skykiss_2000@163.com>
-Content-Type: text/plain
-Posted: 2012-06-16
-Revision: 1
-News-Item-Format: 1.0
-Display-If-Installed: >=sys-apps/portage-2.1.10.61
-
-使用thin manifest
