@@ -13,6 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	GOAGENT_ECLASS="git-2"
 else
 	GOAGENT_SRC_URI="https://github.com/phus/goagent/tarball/v${PV} -> ${P}.tar.gz"
+	RESTRICT="mirror"
 	GOAGENT_ECLASS="vcs-snapshot"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -34,7 +35,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	find . -type f -name *.py \
+	find ${S}/local -type f -name *.py \
 	-exec sed -i -re "1s/python2?/python2/" {} \; || die "Failed to sed"
 }
 
@@ -60,7 +61,7 @@ pkg_postinst() {
 	elog "vim /opt/goagent/server/golang/fetch/fetch.go"
 	elog "vim /opt/goagent/server/golang/app.yaml"
 	elog "cd /opt/goagent/server"
-	elog "upload={golang|python|php} python2.6 uploader.zip"
+	elog "upload={golang|python|php} python2.7 uploader.zip"
 	elog "/etc/init.d/goagent start|stop|restart"
 	elog
 	elog "if you get some error in the uploading,"
