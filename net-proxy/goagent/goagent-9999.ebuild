@@ -8,6 +8,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/phus/goagent.git"
 	EGIT_BRANCH="1.0"
 	KEYWORDS=""
+	RESTRICT="mirror"
 	GOAGENT_SRC_URI=""
 	GOAGENT_ECLASS="git-2"
 else
@@ -27,8 +28,6 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-lang/python:2.7[ssl]"
-
-S="${WORKDIR}/phus-${PN}-651030a"
 
 src_unpack() {
 	${GOAGENT_ECLASS}_src_unpack
