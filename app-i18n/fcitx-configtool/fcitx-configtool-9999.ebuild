@@ -2,21 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 
-inherit cmake-utils git-2
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="git://github.com/fcitx/fcitx-configtool.git"
+	FCITX_CONFIGTOOL_SRC_URI=""
+	FCITX_CONFIGTOOL_ECLASS="git-2"
+	KEYWORDS=""
+else
+	FCITX_CONFIGTOOL_SRC_URI="https://github.com/fcitx/fcitx-configtool/tarball/${PV} -> ${P}.tar.gz"
+	RESTRICT="mirror"
+	FCITX_CONFIGTOOL_ECLASS="vcs-snapshot"
+	KEYWORDS="~amd64 ~x86"
+fi
 
-EGIT_REPO_URI="git://github.com/fcitx/fcitx-configtool.git"
+inherit cmake-utils ${FCITX_CONFIGTOOL_ECLASS}
 
 DESCRIPTION="A gtk GUI to edit fcitx settings"
 HOMEPAGE="https://fcitx.googlecode.com"
-SRC_URI=""
+SRC_URI="${FCITX_CONFIGTOOL_SRC_URI}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="+gtk3"
-RESTRICT="mirror"
 
 RDEPEND="dev-libs/glib:2
 	gtk3? ( x11-libs/gtk+:3 )"
@@ -25,6 +33,10 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	app-arch/xz-utils"
+
+src_unpack() {
+	${FCITX_ECLASS}_src_unpack
+}
 
 src_configure() {
 	local mycmakeargs=(
