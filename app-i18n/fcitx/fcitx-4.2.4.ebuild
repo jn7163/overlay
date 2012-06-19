@@ -2,21 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI="4"
 
-inherit cmake-utils
-
+HOMEPAGE="https://fcitx.googlecode.com"
 DESCRIPTION="Free Chinese Input Toy of X - Input Method Server for X window system"
-HOMEPAGE="http://fcitx.googlecode.com"
-SRC_URI="${HOMEPAGE}/files/${P}.tar.xz
-	${HOMEPAGE}/files/pinyin.tar.gz
-	table? ( ${HOMEPAGE}/files/table.tar.gz )"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+
 IUSE="+cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static-libs table test"
-RESTRICT="mirror"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
+	FCITX_SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
+		table? ( ${HOMEPAGE}/files/table.tar.gz )"
+	FCITX_ECLASS="git-2"
+	KEYWORDS=""
+else
+	FCITX_SRC_URI="https://github.com/fcitx/fcitx/tarball/${PV} -> ${P}.tar.gz
+		${HOMEPAGE}/files/pinyin.tar.gz
+		table? ( ${HOMEPAGE}/files/table.tar.gz )"
+	RESTRICT="mirror"
+	FCITX_ECLASS="vcs-snapshot"
+	KEYWORDS="~amd64 ~x86"
+fi
+
+inherit cmake-utils ${FCITX_ECLASS}
+
+SRC_URI="${FCITX_SRC_URI}"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
 		pango? ( x11-libs/pango[X] )
@@ -61,6 +73,10 @@ update_gtk3_immodules() {
 	if [ -x "${EPREFIX}/usr/bin/gtk-query-immodules-3.0" ]; then
 		"${EPREFIX}/usr/bin/gtk-query-immodules-3.0" --update-cache
 	fi
+}
+
+src_unpack() {
+	${FCITX_ECLASS}_src_unpack
 }
 
 src_prepare() {

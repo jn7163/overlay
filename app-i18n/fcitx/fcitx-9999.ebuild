@@ -2,23 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 
-inherit cmake-utils git-2
-
-EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
-#EGIT_REVISION="default"
-
-DESCRIPTION="Free Chinese Input Toy for X. Another Chinese XIM Input Method"
 HOMEPAGE="https://fcitx.googlecode.com"
-SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
-	table? ( ${HOMEPAGE}/files/table.tar.gz )"
-
+DESCRIPTION="Free Chinese Input Toy of X - Input Method Server for X window system"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+
 IUSE="+cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static-libs table test"
-RESTRICT="mirror"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
+	FCITX_SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
+		table? ( ${HOMEPAGE}/files/table.tar.gz )"
+	FCITX_ECLASS="git-2"
+	KEYWORDS=""
+else
+	FCITX_SRC_URI="https://github.com/fcitx/fcitx/tarball/${PV} -> ${P}.tar.gz
+		${HOMEPAGE}/files/pinyin.tar.gz
+		table? ( ${HOMEPAGE}/files/table.tar.gz )"
+	RESTRICT="mirror"
+	FCITX_ECLASS="vcs-snapshot"
+	KEYWORDS="~amd64 ~x86"
+fi
+
+inherit cmake-utils ${FCITX_ECLASS}
+
+SRC_URI="${FCITX_SRC_URI}"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
 		pango? ( x11-libs/pango[X] )
@@ -43,6 +53,7 @@ DEPEND="${RDEPEND}
 	app-text/enchant
 	dev-libs/icu
 	dev-util/intltool
+	app-arch/xz-utils
 	x11-libs/libxkbfile"
 
 update_gtk_immodules() {
@@ -54,7 +65,7 @@ update_gtk_immodules() {
 	mkdir -p "${EPREFIX}${GTK2_CONFDIR}"
 	if [ -x "${EPREFIX}/usr/bin/gtk-query-immodules-2.0" ]; then
 		"${EPREFIX}/usr/bin/gtk-query-immodules-2.0" > \
-		"${EPREFIX}/${GTK2_CONFDIR}/gtk.immodules"
+		"${EPREFIX}${GTK2_CONFDIR}/gtk.immodules"
 	fi
 }
 
@@ -62,6 +73,10 @@ update_gtk3_immodules() {
 	if [ -x "${EPREFIX}/usr/bin/gtk-query-immodules-3.0" ]; then
 		"${EPREFIX}/usr/bin/gtk-query-immodules-3.0" --update-cache
 	fi
+}
+
+src_unpack() {
+	${FCITX_ECLASS}_src_unpack
 }
 
 src_prepare() {
@@ -83,7 +98,7 @@ src_configure() {
 			$(cmake-utils_use_enable pango PANGO ) \
 			$(cmake-utils_use_enable qt4 QT_IM_MODULE ) \
 			$(cmake-utils_use_enable static-libs STATIC ) \
-			$(cmake-utils_use_enable snooper Snooper ) \
+			$(cmake-utils_use_enable snooper SNOOPER ) \
 			$(cmake-utils_use_enable table TABLE ) \
 			$(cmake-utils_use_enable test TEST )
 	)
@@ -91,12 +106,12 @@ src_configure() {
 }
 
 pkg_postinst() {
-	use gtk && update_gtk_immodules
 	use gtk3 && update_gtk3_immodules
+	use gtk && update_gtk_immodules
 }
 
 pkg_postrm() {
-	use gtk && update_gtk_immodules
 	use gtk3 && update_gtk3_immodules
+	use gtk && update_gtk_immodules
 }
 

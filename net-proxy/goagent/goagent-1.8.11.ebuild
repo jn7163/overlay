@@ -8,7 +8,6 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/phus/goagent.git"
 	EGIT_BRANCH="1.0"
 	KEYWORDS=""
-	RESTRICT="mirror"
 	GOAGENT_SRC_URI=""
 	GOAGENT_ECLASS="git-2"
 else

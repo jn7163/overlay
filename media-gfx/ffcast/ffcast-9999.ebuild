@@ -7,7 +7,6 @@ EAPI="4"
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/lolilolicon/FFcast2.git"
 	KEYWORDS=""
-	RESTRICT="mirror"
 	FFCAST_SRC_URI=""
 	FFCAST_ECLASS="git-2"
 else
