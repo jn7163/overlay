@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-lang/python:2.7[ssl]
-	dev-lang/pyopenssl"
+	dev-python/pyopenssl"
 
 src_unpack() {
 	${GOAGENT_ECLASS}_src_unpack
