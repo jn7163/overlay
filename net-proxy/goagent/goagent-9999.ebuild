@@ -5,13 +5,13 @@
 EAPI="4"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/phus/goagent.git"
+	EGIT_REPO_URI="git://github.com/goagent/goagent.git"
 	EGIT_BRANCH="1.0"
 	KEYWORDS=""
 	GOAGENT_SRC_URI=""
 	GOAGENT_ECLASS="git-2"
 else
-	GOAGENT_SRC_URI="https://github.com/phus/goagent/tarball/v${PV} -> ${P}.tar.gz"
+	GOAGENT_SRC_URI="https://github.com/goagent/goagent/tarball/v${PV} -> ${P}.tar.gz"
 	RESTRICT="mirror"
 	GOAGENT_ECLASS="vcs-snapshot"
 	KEYWORDS="~amd64 ~x86"
@@ -20,14 +20,15 @@ fi
 inherit ${GOAGENT_ECLASS}
 
 DESCRIPTION="A GAE proxy forked from gappproxy/wallproxy"
-HOMEPAGE="https://github.com/phus/goagent"
+HOMEPAGE="https://github.com/goagent/goagent"
 SRC_URI="${GOAGENT_SRC_URI}"
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-lang/python:2.7[ssl]"
+RDEPEND="dev-lang/python:2.7[ssl]
+	dev-lang/pyopenssl"
 
 src_unpack() {
 	${GOAGENT_ECLASS}_src_unpack
