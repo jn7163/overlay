@@ -24,20 +24,23 @@ SRC_URI="${FCITX_CONFIGTOOL_SRC_URI}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gtk gtk3"
+IUSE="+gtk3 gtk"
 REQUIRED_USE="|| ( gtk gtk3 )"
 
-RDEPEND=">=app-i18n/fcitx-4.2.4
-	dev-libs/glib:2
+RDEPEND="dev-libs/glib:2
 	gtk? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )"
 DEPEND="${RDEPEND}
+	>=app-i18n/fcitx-4.2.6
+	app-arch/xz-utils
+	app-text/iso-codes
 	dev-util/intltool
+	dev-libs/libunique:1
 	sys-devel/gettext
-	app-arch/xz-utils"
+	virtual/pkgconfig"
 
 src_unpack() {
-	${FCITX_ECLASS}_src_unpack
+	${FCITX_CONFIGTOOL_ECLASS}_src_unpack
 }
 
 src_configure() {
