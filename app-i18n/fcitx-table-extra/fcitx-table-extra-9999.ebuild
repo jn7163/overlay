@@ -27,7 +27,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.4[table]"
+RDEPEND=">=app-i18n/fcitx-4.2.6[table]"
 RDEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext"
