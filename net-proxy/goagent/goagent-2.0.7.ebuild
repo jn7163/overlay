@@ -29,7 +29,7 @@ IUSE=""
 
 RDEPEND="dev-lang/python:2.7[ssl]
 	dev-python/pyopenssl
-	dev-python/gevent"
+	dev-python/gevent-socketio"
 
 src_unpack() {
 	${GOAGENT_ECLASS}_src_unpack
