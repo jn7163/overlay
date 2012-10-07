@@ -14,13 +14,15 @@ IUSE="+cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
 	FCITX_SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
-		table? ( ${HOMEPAGE}/files/table.tar.gz )"
+		table? ( ${HOMEPAGE}/files/table.tar.gz )
+		${HOMEPAGE}/files/en_dict-20120815.tar.gz"
 	FCITX_ECLASS="git-2"
 	KEYWORDS=""
 else
 	FCITX_SRC_URI="https://github.com/fcitx/fcitx/tarball/${PV} -> ${P}.tar.gz
 		${HOMEPAGE}/files/pinyin.tar.gz
-		table? ( ${HOMEPAGE}/files/table.tar.gz )"
+		table? ( ${HOMEPAGE}/files/table.tar.gz )
+		${HOMEPAGE}/files/en_dict-20120815.tar.gz"
 	RESTRICT="mirror"
 	FCITX_ECLASS="vcs-snapshot"
 	KEYWORDS="~amd64 ~x86"
@@ -81,6 +83,7 @@ src_unpack() {
 
 src_prepare() {
 	cp ${DISTDIR}/pinyin.tar.gz ${S}/data || die
+	cp ${DISTDIR}/en_dict-20120815.tar.gz ${S}/data || die
 	if use table; then
 		cp ${DISTDIR}/table.tar.gz ${S}/data/table || die
 	fi
