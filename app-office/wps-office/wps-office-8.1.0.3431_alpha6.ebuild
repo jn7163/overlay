@@ -41,9 +41,10 @@ RDEPEND="
 		app-emulation/emul-linux-x86-compat
 		sys-devel/gcc[multilib]
 		sys-libs/glibc[multilib]
+	)
 	corefonts? ( media-fonts/corefonts )
 	net-nds/openldap
-	)"
+	dev-db/sqlite:3"
 DEPEND="${RDEPEND}
 	sys-devel/binutils"
 
