@@ -17,7 +17,7 @@ HOMEPAGE="http://www.wps.cn"
 SRC_URI="${PN}_${MY_PV}+wps+wpp~${MY_ALPHA}_i386.deb"
 
 LICENSE="WPS-EULA"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="alpha"
 IUSE="corefonts"
 
