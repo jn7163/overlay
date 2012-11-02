@@ -21,25 +21,32 @@ LICENSE="GPL-2
 	psf? ( BSD XMAME )
 	dumb? ( DUMB-0.9.2 )
 	shn? ( shorten )"
-SLOT="0"
-IUSE="adplug aac alsa psf ape cdda cover cover-imlib2 dts dumb converter curl ffmpeg flac gme
-	hotkeys lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo
-	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2 infobar"
 
-LANGS="be bg bn ca cs da de el en_GB es fa fi fr gl he hr hu id it ja kk km lg nb nl pl pt_BR pt ru si sk sl sr@latin sr sv te tr uk vi zh_CN zh_TW"
+SLOT="0"
+
+IUSE="adplug aac alac alsa psf ape cdda cover cover-imlib2 dts dumb converter curl ffmpeg flac gme
+	hotkeys lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo
+	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2"
+
+REQUIRED_USE="
+	cover? ( curl )
+	lastfm? ( curl )"
+
+LANGS="be bg bn ca cs da de el en_GB eo es et fa fi fr gl he hr hu id it ja kk km lg lt nb nl pl pt
+		pt_BR ro ru si sk sl sr sr@latin sv te tr ug uk vi zh_CN zh_TW"
 for lang in ${LANGS}; do
 	IUSE+=" linguas_${lang}"
 done
 
 RDEPEND="aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
+	alac? ( media-libs/faad2 )
 	cdda? ( dev-libs/libcdio media-libs/libcddb )
-	cover? ( media-libs/imlib2 net-misc/curl )
+	cover? ( media-libs/imlib2 )
 	ffmpeg? ( virtual/ffmpeg )
 	flac? ( media-libs/flac )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	lastfm? ( net-misc/curl )
 	notify? ( sys-apps/dbus )
 	midi? ( media-sound/timidity-freepats )
 	mms? ( media-libs/libmms )
@@ -52,13 +59,16 @@ RDEPEND="aac? ( media-libs/faad2 )
 	wavpack? ( media-sound/wavpack )
 	zip? ( dev-libs/libzip
 	sys-libs/zlib )
-	curl? ( net-misc/curl )
-	infobar? ( net-misc/curl )"
+	curl? ( net-misc/curl )"
 
 DEPEND="
 	dev-util/intltool
 	${RDEPEND}"
+
 S="${WORKDIR}/${PN}-${MY_PV}"
+
+QA_TEXTRELS="usr/lib/deadbeef/ffap.so.0.0.0"
+
 pkg_setup() {
 	if use psf || use dumb || use shn && use static ; then
 		die "ao/converter/dumb or shn plugins can't be builded statically"
@@ -69,14 +79,18 @@ src_prepare() {
 	if use midi ; then
 		# set default gentoo path
 		sed -e 's;/etc/timidity++/timidity-freepats.cfg;/usr/share/timidity/freepats/timidity.cfg;g' \
-			-i "${S}/plugins/wildmidi/wildmidiplug.c"
+		-i "${S}/plugins/wildmidi/wildmidiplug.c"
 	fi
+
+	# remove unity trash
+	epatch "${FILESDIR}/desktop.patch"
+
 	for lang in ${LANGS};do
-	for x in ${lang};do
-	  if ! use linguas_${x}; then
-		rm -f "po/${x}.po"
-	  fi
-	done
+		for x in ${lang};do
+			if ! use linguas_${x}; then
+				sed -e "s|^${x}$||" -i "po/LINGUAS"
+			fi
+		done
 	done
 }
 
@@ -85,16 +99,23 @@ src_configure() {
 		--docdir=/usr/share/${PN}
 		$(use_enable aac)
 		$(use_enable adplug)
+		$(use_enable alac)
 		$(use_enable alsa)
 		$(use_enable ape ffap)
 		$(use_enable cdda)
 		$(use_enable converter)
+		$(use_enable cover artwork)
+		$(use_enable cover-imlib2 artwork-imlib2)
+		$(use_enable curl vfs-curl)
 		$(use_enable dts dca)
 		$(use_enable dumb)
 		$(use_enable ffmpeg)
 		$(use_enable flac)
 		$(use_enable gme)
+		$(use_enable gtk2)
+		$(use_enable gtk3)
 		$(use_enable hotkeys)
+		$(use_enable lastfm lfm)
 		$(use_enable m3u)
 		$(use_enable midi wildmidi)
 		$(use_enable mms)
@@ -109,6 +130,7 @@ src_configure() {
 		$(use_enable pulseaudio pulse)
 		$(use_enable rpath)
 		$(use_enable shellexec)
+		$(use_enable shellexec shellexecui)
 		$(use_enable shn)
 		$(use_enable sid)
 		$(use_enable sndfile)
@@ -123,42 +145,11 @@ src_configure() {
 		$(use_enable wavpack)
 		$(use_enable zip vfs-zip)"
 
-	if use cover || use lastfm ; then
-		my_config="${my_config}
-			--enable-vfs-curl
-			$(use_enable cover artwork)
-			$(use_enable cover-imlib2 artwork-imlib2)
-			$(use_enable lastfm lfm)"
-	else
-		my_config="${my_config}
-			$(use_enable cover artwork)
-			$(use_enable cover-imlib2 artwork-imlib2)
-			$(use_enable curl vfs-curl)
-			$(use_enable lastfm lfm)"
-	fi
-
-	if use infobar; then
-	  my_config="${my_config}
-	  --enable-vfs-curl"
-	fi
-
-	if use gtk3;then
-	  my_config="${my_config}
-	  --enable-gtk3
-	  --enable-gtkui"
-	fi
-
-	if use gtk2;then
-	  my_config="${my_config}
-	  --enable-gtkui"
-	else
-	  my_config="${my_config}
-	  --disable-gtk2"
-	fi
 	econf ${my_config}
 }
-
 pkg_preinst() {
+	use linguas_pt_BR || rm -f "${D}/usr/share/deadbeef/help.pt_BR.txt"
+	use linguas_ru || rm -f "${D}/usr/share/deadbeef/help.ru.txt"
 	gnome2_icon_savelist
 	gnome2_schemas_savelist
 }
