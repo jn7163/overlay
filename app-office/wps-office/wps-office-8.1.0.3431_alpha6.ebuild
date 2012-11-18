@@ -66,7 +66,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	font_pkg_postinst
+	use corefonts && font_pkg_postinst
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 }
