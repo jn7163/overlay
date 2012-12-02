@@ -51,6 +51,7 @@ RDEPEND="
 		sys-libs/glibc[multilib]
 	)
 	corefonts? ( media-fonts/corefonts )
+	media-libs/libpng:1.2
 	net-nds/openldap
 	dev-db/sqlite:3"
 DEPEND="${RDEPEND}
