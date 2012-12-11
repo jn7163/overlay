@@ -10,11 +10,12 @@ inherit fdo-mime font unpacker versionator
 MY_PV="$(get_version_component_range 1-4)"
 MY_A="$(get_version_component_range 5)"
 MY_ALPHA=${MY_A/alpha/a}
+MY_PRE="$(get_version_component_range 6)"
 
 DESCRIPTION="WPS Office is an office productivity suite. This is an ALPHA
 package. Use it at your own risk."
 HOMEPAGE="http://www.wps.cn"
-SRC_URI="${PN}_${MY_PV}+wps+wpp+et~${MY_ALPHA}_i386.deb"
+SRC_URI="${PN}_${MY_PV}+wps+wpp+et~${MY_ALPHA}${MY_PRE}_i386.deb"
 
 LICENSE="WPS-EULA"
 KEYWORDS="~amd64 ~x86"
