@@ -10,7 +10,6 @@ inherit fdo-mime font unpacker versionator
 MY_PV="$(get_version_component_range 1-4)"
 MY_A="$(get_version_component_range 5)"
 MY_ALPHA=${MY_A/alpha/a}
-MY_SP="$(get_version_component_range 6)"
 
 DESCRIPTION="WPS Office is an office productivity suite. This is an ALPHA
 package. Use it at your own risk."
