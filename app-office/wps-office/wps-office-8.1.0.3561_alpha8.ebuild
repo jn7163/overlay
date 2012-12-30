@@ -16,9 +16,10 @@ DESCRIPTION="WPS Office is an office productivity suite. This is an ALPHA
 package. Use it at your own risk."
 HOMEPAGE="http://www.wps.cn"
 
-if [ -z ${MY_SP} ]; then
+if [ -z "$(get_version_component_range 6)" ]; then
 	SRC_URI="${PN}_${MY_PV}~${MY_ALPHA}_i386.deb"
 else
+	MY_SP="$(get_version_component_range 6)"
 	SRC_URI="${PN}_${MY_PV}~${MY_ALPHA}${MY_SP}_i386.deb"
 fi
 
