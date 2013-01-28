@@ -4,12 +4,15 @@
 
 EAPI="4"
 
-HOMEPAGE="https://fcitx.googlecode.com"
-DESCRIPTION="Free Chinese Input Toy of X - Input Method Server for X window system"
+HOMEPAGE="http://fcitx-im.org/wiki/Fcitx"
+DESCRIPTION="Fcitx [ˈfaɪtɪks] is an input method framework with extension
+support. Currently it supports Linux and Unix systems like freebsd. It
+has three built-in Input Method Engine, Pinyin, QuWei and Table-based input
+methods. "
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static-libs table test"
+IUSE="autostart +cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static-libs table test"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
@@ -19,10 +22,10 @@ if [[ ${PV} == "9999" ]]; then
 	FCITX_ECLASS="git-2"
 	KEYWORDS=""
 else
-	FCITX_SRC_URI="https://github.com/fcitx/fcitx/tarball/${PV} -> ${P}.tar.gz
+	FCITX_SRC_URI="https://github.com/fcitx/fcitx/archive/${PV}.tar.gz -> ${P}.tar.gz
 		${HOMEPAGE}/files/pinyin.tar.gz
 		table? ( ${HOMEPAGE}/files/table.tar.gz )
-		${HOMEPAGE}/files/en_dict-20120815.tar.gz"
+		${HOMEPAGE}/files/en_dict-20121020.tar.gz"
 	RESTRICT="mirror"
 	FCITX_ECLASS="vcs-snapshot"
 	KEYWORDS="~amd64 ~x86"

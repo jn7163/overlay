@@ -31,11 +31,14 @@ RDEPEND="dev-libs/glib:2
 	gtk? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )"
 DEPEND="${RDEPEND}
-	>=app-i18n/fcitx-4.2.6
+	>=app-i18n/fcitx-4.2.7
 	app-arch/xz-utils
 	app-text/iso-codes
 	dev-util/intltool
-	dev-libs/libunique:1
+	gtk? (
+		dev-libs/dbus-glib
+		dev-libs/libunique:1
+	)
 	sys-devel/gettext
 	virtual/pkgconfig"
 
