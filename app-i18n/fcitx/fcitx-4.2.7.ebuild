@@ -12,20 +12,15 @@ methods. "
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="autostart +cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static-libs table test"
+IUSE="+cairo debug +gtk +gtk3 introspection lua opencc +pango qt4 snooper static-libs table test"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/fcitx/fcitx.git"
-	FCITX_SRC_URI="${HOMEPAGE}/files/pinyin.tar.gz
-		table? ( ${HOMEPAGE}/files/table.tar.gz )
-		${HOMEPAGE}/files/en_dict-20120815.tar.gz"
+	FCITX_SRC_URI=""
 	FCITX_ECLASS="git-2"
 	KEYWORDS=""
 else
-	FCITX_SRC_URI="https://github.com/fcitx/fcitx/tarball/${PV} -> ${P}.tar.gz
-		${HOMEPAGE}/files/pinyin.tar.gz
-		table? ( ${HOMEPAGE}/files/table.tar.gz )
-		${HOMEPAGE}/files/en_dict-20121020.tar.gz"
+	FCITX_SRC_URI="https://github.com/fcitx/fcitx/tarball/${PV} -> ${P}.tar.gz"
 	RESTRICT="mirror"
 	FCITX_ECLASS="vcs-snapshot"
 	KEYWORDS="~amd64 ~x86"
@@ -33,7 +28,10 @@ fi
 
 inherit cmake-utils ${FCITX_ECLASS}
 
-SRC_URI="${FCITX_SRC_URI}"
+SRC_URI="${FCITX_SRC_URI}
+	${HOMEPAGE}/files/pinyin.tar.gz
+	table? ( ${HOMEPAGE}/files/table.tar.gz )
+	${HOMEPAGE}/files/en_dict-20121020.tar.gz"
 
 RDEPEND="cairo? ( x11-libs/cairo[X]
 		pango? ( x11-libs/pango[X] )
@@ -86,7 +84,7 @@ src_unpack() {
 
 src_prepare() {
 	cp ${DISTDIR}/pinyin.tar.gz ${S}/data || die
-	cp ${DISTDIR}/en_dict-20120815.tar.gz ${S}/data || die
+	cp ${DISTDIR}/en_dict-20121020.tar.gz ${S}/data || die
 	if use table; then
 		cp ${DISTDIR}/table.tar.gz ${S}/data/table || die
 	fi
