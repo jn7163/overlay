@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0_p20121128.ebuild,v 1.1 2012/12/20 14:06:56 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0_p20130126.ebuild,v 1.2 2013/02/02 01:13:18 mr_bones_ Exp $
 
 EAPI=4
 
@@ -268,8 +268,6 @@ src_configure() {
 	# DVB / Video4Linux / Radio support #
 	#####################################
 	myconf+=" --disable-tv-bsdbt848"
-	# v4l1 is gone since linux-headers-2.6.38
-	myconf+=" --disable-tv-v4l1"
 	if { use dvb || use v4l || use pvr || use radio; }; then
 		use dvb || myconf+=" --disable-dvb"
 		use pvr || myconf+=" --disable-pvr"
@@ -409,11 +407,12 @@ src_configure() {
 		--bindir="${EPREFIX}"/usr/bin \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--confdir="${EPREFIX}"/etc/${PN} \
-		--datadir="${EPREFIX}"/usr/share/${PN} \
 		--mandir="${EPREFIX}"/usr/share/man \
 		--localedir="${EPREFIX}"/usr/share/locale \
 		--enable-translation \
 		${myconf} || die
+
+	MAKEOPTS+=" V=1"
 }
 
 src_compile() {
