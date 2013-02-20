@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=5
 
 inherit fdo-mime font unpacker versionator
 
@@ -78,11 +78,6 @@ DEPEND="${RDEPEND}
 	sys-devel/binutils"
 
 S=${WORKDIR}
-
-src_prepare() {
-	sed -i -e '/Categories/s/Spreadsheets/Spreadsheet/g' \
-		"${S}"/usr/share/applications/wps-office-et.desktop
-}
 
 src_install() {
 	exeinto /usr/bin
