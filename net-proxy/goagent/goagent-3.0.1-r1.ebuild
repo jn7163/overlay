@@ -66,7 +66,6 @@ pkg_postinst() {
 	fdo-mime_desktop_database_update
 	elog
 	elog "config file: /etc/goagent"
-	elog "init script: /etc/init.d/goagent"
 	elog
 	elog "Usage:"
 	elog "goagent-gtk"
