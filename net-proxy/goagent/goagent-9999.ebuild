@@ -28,6 +28,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-lang/python:3.3[ssl]
+	dev-libs/nss[utils]
 	dev-python/gevent
 	dev-python/pyopenssl
 	x11-libs/vte:0[python]"
