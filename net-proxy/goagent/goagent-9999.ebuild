@@ -55,6 +55,13 @@ src_install() {
 	insinto "/usr/share/applications"
 	doins "${FILESDIR}/goagent-gtk.desktop"
 
+	insinto "/usr/share/pixmaps"
+	doins "${FILESDIR}/goagent-logo.png"
+
+	insinto "/usr/share/pixmaps"
+	doins "${S}/local/goagent-logo.png"
+
+
 #	newinitd "${FILESDIR}/goagent-initd" goagent
 	dosym /etc/goagent "/opt/goagent/local/proxy.ini"
 
