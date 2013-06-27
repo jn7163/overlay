@@ -1,38 +1,33 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0_p20130126.ebuild,v 1.4 2013/05/16 19:14:38 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0_p20130428.ebuild,v 1.4 2013/06/13 19:32:28 ulm Exp $
 
-EAPI=4
+EAPI=5
 
-[[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
+# https://bugs.gentoo.org/show_bug.cgi?id=434356#c4
+PYTHON_COMPAT=( python{2_7,3_1,3_2,3_3} )
 
-inherit fdo-mime python toolchain-funcs eutils flag-o-matic multilib base ${VCS_ECLASS}
+EGIT_REPO_URI="git://git.mplayer2.org/mplayer2.git"
+
+inherit fdo-mime toolchain-funcs flag-o-matic multilib base python-any-r1
+[[ ${PV} == *9999* ]] && inherit git-2
 
 NAMESUF="${PN/mplayer/}"
 DESCRIPTION="Media Player for Linux"
 HOMEPAGE="http://www.mplayer2.org/"
-
-if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://git.mplayer2.org/mplayer2.git"
-else
-	SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
-fi
+[[ ${PV} == *9999* ]] || \
+SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-if [[ ${PV} == *9999* ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-fi
-IUSE="+a52 +alsa aqua bluray bs2b cddb +cdio cpudetection debug
-directfb doc +dts +dv dvb +dvd +dvdnav +enca +faad fbcon ftp gif +iconv
-ipv6 jack joystick jpeg kernel_linux ladspa lcms +libass libcaca lirc mad
-md5sum mng +mp3 +network nut +opengl oss png pnm portaudio +postproc
-pulseaudio pvr +quicktime quvi radio +rar +real +rtc samba sdl +speex tga
-+theora +unicode v4l vcd vdpau +vorbis +X xanim xinerama
-+xscreensaver +xv xvid yuv4mpeg
-"
+[[ ${PV} == *9999* ]] || \
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+IUSE="+a52 +alsa aqua bluray bs2b cddb +cdio cpudetection debug directfb doc
++dts +dv dvb +dvd +dvdnav +enca +faad fbcon ftp gif +iconv ipv6 jack joystick
+jpeg kernel_linux ladspa lcms +libass libcaca lirc mad md5sum mng +mp3 +network
+nut +opengl oss png pnm portaudio +postproc pulseaudio pvr quvi radio +rar +rtc
+samba sdl +speex tga +theora +unicode v4l vcd vdpau +vorbis +X xanim xinerama
++xscreensaver +xv xvid yuv4mpeg"
 IUSE+=" symlink"
 
 CPU_FEATURES="3dnow 3dnowext altivec +mmx mmxext +shm sse sse2 ssse3"
@@ -65,15 +60,18 @@ RDEPEND+="
 		vdpau? ( x11-libs/libvdpau )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
-		xv? (
-			x11-libs/libXv
-		)
+		xv? ( x11-libs/libXv )
 	)
 	a52? ( media-libs/a52dec )
 	alsa? ( media-libs/alsa-lib )
 	bluray? ( media-libs/libbluray )
 	bs2b? ( media-libs/libbs2b )
-	cdio? ( || ( dev-libs/libcdio-paranoia <dev-libs/libcdio-0.90[-minimal] ) )
+	cdio? (
+		|| (
+			dev-libs/libcdio-paranoia
+			<dev-libs/libcdio-0.90[-minimal]
+		)
+	)
 	directfb? ( dev-libs/DirectFB )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
@@ -89,7 +87,10 @@ RDEPEND+="
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg )
 	ladspa? ( media-libs/ladspa-sdk )
-	libass? ( >=media-libs/libass-0.9.10[enca?,fontconfig] virtual/ttf-fonts )
+	libass? (
+		>=media-libs/libass-0.9.10[enca?,fontconfig]
+		virtual/ttf-fonts
+	)
 	libcaca? ( media-libs/libcaca )
 	lirc? ( app-misc/lirc )
 	mad? ( media-libs/libmad )
@@ -99,7 +100,12 @@ RDEPEND+="
 	png? ( media-libs/libpng )
 	pnm? ( media-libs/netpbm )
 	portaudio? ( >=media-libs/portaudio-19_pre20111121 )
-	postproc? ( || ( media-libs/libpostproc <media-video/libav-0.8.2-r1 media-video/ffmpeg ) )
+	postproc? (
+		|| (
+			media-libs/libpostproc
+			media-video/ffmpeg
+		)
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	quvi? ( >=media-libs/libquvi-0.4.1 )
 	rar? (
@@ -115,13 +121,13 @@ RDEPEND+="
 	vorbis? ( media-libs/libvorbis )
 	xanim? ( media-video/xanim )
 	xvid? ( media-libs/xvid )
-	>=virtual/ffmpeg-0.10.2
+	>=virtual/ffmpeg-9
 	symlink? ( !media-video/mplayer )
 "
 ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	>=dev-lang/python-2.7
+	${PYTHON_DEPS}
 	dev-python/docutils
 	sys-devel/gettext
 	X? (
@@ -147,7 +153,7 @@ pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
 		elog
 		elog "This is a live ebuild which installs the latest from upstream's"
-		elog "${VCS_ECLASS} repository, and is unsupported by Gentoo."
+		elog "git repository, and is unsupported by Gentoo."
 		elog "Everything but bugs in the ebuild itself will be ignored."
 		elog
 	fi
@@ -172,12 +178,7 @@ pkg_setup() {
 	einfo "For various format support you need to enable the support on your ffmpeg package:"
 	einfo "    media-video/libav or media-video/ffmpeg"
 
-	# https://bugs.gentoo.org/show_bug.cgi?id=434356#c4
-	python_pkg_setup
-	major=$(python_get_version --major)
-	minor=$(python_get_version --minor)
-	[[ ( ${major} -eq 2 && ${minor} -ge 7 ) || ${major} -ge 3 ]] \
-			|| die "Please eselect Python 2.7 or later"
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
@@ -306,27 +307,7 @@ src_configure() {
 	#################
 	# Binary codecs #
 	#################
-	# bug 213836
-	use quicktime || myconf+=" --disable-qtx"
-
-	######################
-	# RealPlayer support #
-	######################
-	# Realplayer support shows up in four places:
-	# - libavcodec (internal)
-	# - win32codecs
-	# - realcodecs (win32codecs libs)
-	# - realcodecs (realplayer libs)
-
-	# internal
-	use real || myconf+=" --disable-real"
-
-	# Real binary codec support only available on x86, amd64
-	if use real; then
-		use x86 && myconf+=" --codecsdir=/opt/RealPlayer/codecs"
-		use amd64 && myconf+=" --codecsdir=/usr/$(get_libdir)/codecs"
-	fi
-	myconf+=" --disable-win32dll"
+	myconf+=" --disable-qtx --disable-real --disable-win32dll"
 
 	################
 	# Video Output #
@@ -425,10 +406,6 @@ src_install() {
 	dodoc DOCS/tech/{*.txt,mpsub.sub,playtree}
 	docinto TOOLS/
 	dodoc -r TOOLS
-	if use real; then
-		docinto tech/realcodecs/
-		dodoc DOCS/tech/realcodecs/*
-	fi
 
 	if use doc; then
 		docinto html/
