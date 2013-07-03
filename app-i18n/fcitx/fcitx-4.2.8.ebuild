@@ -8,8 +8,7 @@ inherit multilib multilib-build cmake-utils eutils gnome2-utils fdo-mime
 
 DESCRIPTION="Flexible Context-aware Input Tool with eXtension"
 HOMEPAGE="http://fcitx-im.org/wiki/Fcitx"
-SRC_URI="http://fcitx.googlecode.com/files/${P}_dict.tar.xz
-	http://dev.gentoo.org/~yngwin/distfiles/${P}-fixed-pngs.tgz" #465658
+SRC_URI="https://github.com/fcitx/fcitx/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -93,10 +92,9 @@ src_prepare() {
 	~/.xinitrc to configure your desktop, make sure to include the fcitx
 	command to start it."
 
-	cp -a ../skin . || die 'copying fixed pngs failed' #465658
+	#cp -a ../skin . || die 'copying fixed pngs failed' #465658
 	# patch fcitx to let fcitx-sunpinyin to build with gcc 4.6
-	epatch "${FILESDIR}/${P}-gcc46-compatible.patch"
-	epatch_user
+	#epatch "${FILESDIR}/${P}-gcc46-compatible.patch"
 }
 
 src_configure() {
