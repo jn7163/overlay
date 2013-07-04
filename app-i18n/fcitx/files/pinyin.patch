@@ -1,0 +1,12 @@
+diff -Nurp fcitx-4.2.8.orig/src/im/pinyin/CMakeLists.txt fcitx-4.2.8/src/im/pinyin/CMakeLists.txt
+--- fcitx-4.2.8.orig/src/im/pinyin/CMakeLists.txt	2013-06-30 12:02:49.000000000 +0800
++++ fcitx-4.2.8/src/im/pinyin/CMakeLists.txt	2013-07-05 07:18:36.419366781 +0800
+@@ -18,7 +18,7 @@ set(FCITX_PINYIN_HEADERS
+   pydef.h
+   )
+   
+-if(ENABLE_TABLE)
++if(ENABLE_PINYIN)
+   set(pinyin_noinstall)
+ else()
+   set(pinyin_noinstall NO_INSTALL)
