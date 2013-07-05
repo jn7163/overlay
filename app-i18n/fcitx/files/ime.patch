@@ -1,3 +1,12 @@
+From 46d5a69d595ac825f47a3c22ddeb8ce71b04e887 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Mon, 1 Jul 2013 10:38:24 -0400
+Subject: [PATCH] [fcitx] do 2nd/3rd first.
+
+---
+ src/lib/fcitx/ime.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/src/lib/fcitx/ime.c b/src/lib/fcitx/ime.c
 index 54d148b..089391d 100644
 --- a/src/lib/fcitx/ime.c

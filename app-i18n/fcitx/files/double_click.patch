@@ -1,3 +1,17 @@
+From 94635187b18badb1a2dff821de9a30a20d00feb1 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Mon, 1 Jul 2013 10:34:36 -0400
+Subject: [PATCH] [fcitx] trigger non-modifier on press, single key & modifier
+ on release.
+
+and drop evil double click.
+---
+ data/config.desc            |   6 -
+ src/lib/fcitx-utils/utils.h |   2 +
+ src/lib/fcitx/configfile.c  |   1 -
+ src/lib/fcitx/ime.c         | 321 +++++++++++++++++++++++++++-----------------
+ 4 files changed, 200 insertions(+), 130 deletions(-)
+
 diff --git a/data/config.desc b/data/config.desc
 index 47ea29e..e086f10 100644
 --- a/data/config.desc
