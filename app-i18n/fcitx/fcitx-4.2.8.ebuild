@@ -92,6 +92,8 @@ src_prepare() {
 	~/.xinitrc to configure your desktop, make sure to include the fcitx
 	command to start it."
 
+	epatch "${FILESDIR}/double_click.patch"
+	epatch "${FILESDIR}/ime.patch"
 	epatch "${FILESDIR}/pinyin.patch"
 	epatch_user
 }
