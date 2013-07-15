@@ -65,7 +65,7 @@ src_install() {
 	doins -r "${S}/local" "${S}/server"
 }
 
-pkg_preinst() {
+pkg_prerm() {
 	rm ${ROOT}/opt/goagent/local/certs/* || die
 }
 
