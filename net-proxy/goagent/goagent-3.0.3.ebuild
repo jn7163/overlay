@@ -76,9 +76,9 @@ src_install() {
 	newinitd "${FILESDIR}/goagent-initd" goagent
 }
 
-pkg_prerm() {
-	find ${ROOT}/opt/goagent/local/certs/ -type f -exec rm {} + || die
-}
+#pkg_prerm() {
+#	find ${ROOT}/opt/goagent/local/certs/ -type f -exec rm {} + || die
+#}
 
 pkg_postinst() {
 	use gtk && fdo-mime_desktop_database_update
