@@ -41,9 +41,6 @@ RESTRICT="strip mirror"
 LICENSE="WPS-EULA"
 IUSE="corefonts +sharedfonts"
 
-FONTDIR="/opt/kingsoft/wps-office/office6/fonts"
-FONT_SUFFIX="ttf TTF"
-
 RDEPEND="
 	x86? (
 		app-arch/bzip2
@@ -82,6 +79,8 @@ DEPEND="${RDEPEND}
 	sys-devel/binutils"
 
 S=${WORKDIR}
+FONT_S=${S}/usr/share/fonts/wps-office
+FONT_SUFFIX="ttf TTF"
 
 src_install() {
 	exeinto /usr/bin
@@ -91,7 +90,7 @@ src_install() {
 	doexe ${S}/usr/bin/et
 
 	if ! use sharedfonts; then
-		FONT_S=${S}/usr/share/fonts/wps-office font_src_install
+		FONTDIR="/opt/kingsoft/wps-office/office6/fonts" font_src_install
 		rm -rf ${S}/usr/share/fonts || die
 	fi
 
