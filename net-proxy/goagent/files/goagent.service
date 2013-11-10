@@ -8,3 +8,4 @@ ExecStart=/usr/bin/python2 /opt/goagent/local/proxy.py
 
 [Install]
 WantedBy=multi-user.target
+
