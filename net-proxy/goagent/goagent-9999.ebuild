@@ -31,9 +31,7 @@ RDEPEND="dev-lang/python:2.7[ssl]
 	dev-libs/nss[utils]
 	dev-python/gevent
 	dev-python/pyopenssl
-	gtk? (
-		x11-libs/vte:0[python]
-	)"
+	gtk? ( x11-libs/vte:0[python] )"
 
 src_unpack() {
 	${GOAGENT_ECLASS}_src_unpack
@@ -74,6 +72,7 @@ src_install() {
 	doins -r "${S}/local" "${S}/server"
 
 	newinitd "${FILESDIR}/goagent-initd" goagent
+	systemd_dounit "${FILESDIR}/goagent.service"
 }
 
 #pkg_prerm() {
