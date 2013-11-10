@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit ${GOAGENT_ECLASS} fdo-mime python
+inherit ${GOAGENT_ECLASS} fdo-mime python systemd
 
 DESCRIPTION="A GAE proxy forked from gappproxy/wallproxy"
 HOMEPAGE="https://github.com/goagent/goagent"
