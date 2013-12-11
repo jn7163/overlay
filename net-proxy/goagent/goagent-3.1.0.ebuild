@@ -28,7 +28,7 @@ SLOT="0"
 IUSE="crypto dns +gtk"
 
 RDEPEND="crypto? ( dev-python/pycrypto )
-	dev-lang/python:2/7[ssl]
+	dev-lang/python:2.7[ssl]
 	dev-libs/nss[utils]
 	dev-python/pyopenssl
 	dns? ( >=dev-python/gevent-1.0
