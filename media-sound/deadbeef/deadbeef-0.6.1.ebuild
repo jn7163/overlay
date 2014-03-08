@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="5"
 
-inherit fdo-mime gnome2-utils versionator
+inherit fdo-mime gnome2-utils eutils versionator
 
 MY_PV="$(replace_version_separator 3 '-')"
 
@@ -21,31 +21,32 @@ LICENSE="GPL-2
 	psf? ( BSD XMAME )
 	dumb? ( DUMB-0.9.2 )
 	shn? ( shorten )"
-
 SLOT="0"
-
 IUSE="adplug aac alac alsa psf ape cdda cover cover-imlib2 dts dumb converter curl ffmpeg flac gme
-	hotkeys lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo
-	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2"
+	hotkeys lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo pltbrowser
+	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2 wma"
 
 REQUIRED_USE="
 	cover? ( curl )
-	lastfm? ( curl )"
+	lastfm? ( curl )
+	|| ( alsa oss pulseaudio nullout )"
 
-LANGS="be bg bn ca cs da de el en_GB eo es et fa fi fr gl he hr hu id it ja kk km lg lt nb nl pl pt
-		pt_BR ro ru si sk sl sr sr@latin sv te tr ug uk vi zh_CN zh_TW"
+LANGS="be bg bn ca cs da de el en_GB es et eu fa fi fr gl he hr hu id it ja kk km lg
+	lt nl pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr ug uk vi zh_CN zh_TW"
+
 for lang in ${LANGS}; do
 	IUSE+=" linguas_${lang}"
 done
 
 RDEPEND="aac? ( media-libs/faad2 )
+	adplug? ( media-libs/adplug )
 	alsa? ( media-libs/alsa-lib )
 	alac? ( media-libs/faad2 )
-	cdda? ( dev-libs/libcdio media-libs/libcddb )
+	cdda? ( >=dev-libs/libcdio-0.90 media-libs/libcddb )
 	cover? ( media-libs/imlib2 )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? ( !media-plugins/deadbeef-ffmpeg >=media-video/ffmpeg-1.0.7 )
 	flac? ( media-libs/flac )
-	gtk2? ( x11-libs/gtk+:2 )
+	gtk2? ( x11-libs/gtk+:2 x11-libs/gtkglext )
 	gtk3? ( x11-libs/gtk+:3 )
 	notify? ( sys-apps/dbus )
 	midi? ( media-sound/timidity-freepats )
@@ -65,9 +66,9 @@ DEPEND="
 	dev-util/intltool
 	${RDEPEND}"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
 QA_TEXTRELS="usr/lib/deadbeef/ffap.so.0.0.0"
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_setup() {
 	if use psf || use dumb || use shn && use static ; then
@@ -76,6 +77,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if [[ -f autogen.sh ]];then
+		touch config.rpath
+		sh autogen.sh
+	fi
+
 	if use midi ; then
 		# set default gentoo path
 		sed -e 's;/etc/timidity++/timidity-freepats.cfg;/usr/share/timidity/freepats/timidity.cfg;g' \
@@ -83,7 +89,7 @@ src_prepare() {
 	fi
 
 	# remove unity trash
-	epatch "${FILESDIR}/desktop.patch"
+	epatch "${FILESDIR}/desktop-2.patch"
 
 	for lang in ${LANGS};do
 		for x in ${lang};do
@@ -97,6 +103,7 @@ src_prepare() {
 src_configure() {
 	my_config="--disable-portable
 		--docdir=/usr/share/${PN}
+		--disable-coreaudio
 		$(use_enable aac)
 		$(use_enable adplug)
 		$(use_enable alac)
@@ -128,6 +135,7 @@ src_configure() {
 		$(use_enable oss)
 		$(use_enable psf)
 		$(use_enable pulseaudio pulse)
+		$(use_enable pltbrowser)
 		$(use_enable rpath)
 		$(use_enable shellexec)
 		$(use_enable shellexec shellexecui)
@@ -143,7 +151,8 @@ src_configure() {
 		$(use_enable vorbis)
 		$(use_enable vtx)
 		$(use_enable wavpack)
-		$(use_enable zip vfs-zip)"
+		$(use_enable zip vfs-zip)
+		$(use_enable wma)"
 
 	econf ${my_config}
 }
