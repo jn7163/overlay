@@ -34,7 +34,7 @@ DESCRIPTION="WPS Office is an office productivity suite. This is an ALPHA
 package. Use it at your own risk."
 HOMEPAGE="http://www.wps.cn"
 
-SRC_URI="http://wdl.cache.ijinshan.com/wps/download/Linux/unstable/${PN}_${MY_VV}_i386.deb"
+SRC_URI="http://kdl.cc.ksosoft.com/wps-community/${PN}_${MY_VV}_i386.deb"
 
 SLOT="0"
 RESTRICT="strip mirror"
