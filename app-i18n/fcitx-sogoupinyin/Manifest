@@ -1,1 +1,2 @@
-DIST fcitx-sogoupinyin-release_0.0.4.orig.tar.gz 40700761 SHA256 a0a44fa26e0dfc3674268f24df3866f11aaab91b2c830032c742d57b8b4d35b1
+DIST sogou_pinyin_linux_1.0.0.0014_amd64.deb 16553440 SHA256 482a6ff275e46c0cd9ced803d2d4c33ac3f3e9c6654ab378d94623d458b00249
+DIST sogou_pinyin_linux_1.0.0.0014_i386.deb 16574078 SHA256 3235b40cdbfe8a615ead8ee8a2e04160aa2e31d59afe7b02614e20207a5c639a
