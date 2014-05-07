@@ -8,8 +8,8 @@ inherit unpacker
 
 DESCRIPTION="Sogou Pinyin with Fcitx Wrapper."
 HOMEPAGE="http://pinyin.sogou.com/linux/"
-SRC_URI="amd64? ( http://download.ime.sogou.com/1398087082/sogou_pinyin_linux_${PV}_amd64.deb )
-	x86? ( http://download.ime.sogou.com/1398087082/sogou_pinyin_linux_${PV}_i386.deb )"
+SRC_URI="amd64? ( http://download.ime.sogou.com/1399285298/sogou_pinyin_linux_${PV}_amd64.deb )
+	x86? ( http://download.ime.sogou.com/1399285298/sogou_pinyin_linux_${PV}_i386.deb )"
 
 LICENSE="Fcitx-Sogou"
 SLOT="0"
@@ -37,9 +37,9 @@ src_install() {
 	insopts -m0755
 	doins ${S}/usr/lib/*-linux-gnu/fcitx/*
 	
-	#dodir /usr/share/mime-info
-	#insinto /usr/share/mime-info
-	#doins /usr/lib/mime/packages/fcitx-ui-qimpanel
+	dodir /usr/share/mime-info
+	insinto /usr/share/mime-info
+	install -D ${S}/usr/lib/mime/packages/fcitx-ui-qimpanel fcitx-ui-qimpanel.keys
 
 	dodir /usr/share
 	insinto /usr/share
