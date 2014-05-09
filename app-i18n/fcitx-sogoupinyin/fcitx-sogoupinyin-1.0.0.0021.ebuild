@@ -17,18 +17,53 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8[qt4,X,dbus]
+RDEPEND="
+	app-arch/bzip2
+	app-crypt/mit-krb5
+	>=app-i18n/fcitx-4.2.8[qt4,X,dbus]
 	!app-i18n/fcitx-qimpanel
+	app-i18n/opencc
+	dev-libs/expat
+	dev-libs/glib
+	dev-libs/libffi
+	dev-libs/libgcrypt:11
 	dev-qt/qtdeclarative:4
 	dev-qt/qtgui:4
-	net-misc/curl[curl_ssl_gnutls,-curl_ssl_openssl]"
+	media-libs/fontconfig
+	media-libs/freetype
+	media-libs/libpng
+	=media-video/rtmpdump-2.3
+	net-dns/libidn
+	net-nds/openldap
+	net-libs/libssh2
+	net-misc/curl[curl_ssl_gnutls,-curl_ssl_openssl]
+	sys-apps/dbus
+	sys-apps/keyutils
+	sys-apps/util-linux
+	sys-devel/gcc
+	sys-libs/e2fsprogs-libs
+	sys-libs/zlib
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+	x11-libs/libXau
+	x11-libs/libxcb
+	x11-libs/libXcursor
+	x11-libs/libXdmcp
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXi
+	x11-libs/libXrandr
+	x11-libs/libXrender"
 
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
 
 src_prepare() {
-	rm -rf usr/share/upstart
+	#rm -rf usr/share/upstart
+	sed -i -e '/MimeType/s/x-sogouskin/x-sogouskin\;/g' \
+		"${S}"/usr/share/applications/fcitx-ui-qimpanel.desktop
 }
 
 src_install() {
@@ -53,11 +88,13 @@ src_install() {
 	insinto /etc/xdg/autostart
 	doins ${S}/etc/xdg/autostart/*
 
-	if use amd64; then
-		dosym /usr/lib64/libcurl.so.4 "/usr/lib64/libcurl-gnutls.so.4"
-	elif use x86; then
-		dosym /usr/lib/libcurl.so.4 "/usr/lib/libcurl-gnutls.so.4"
-	fi
+	#if use amd64; then
+	#	dosym /usr/lib64/libcurl.so.4 "/usr/lib64/libcurl-gnutls.so.4"
+	#elif use x86; then
+	#	dosym /usr/lib/libcurl.so.4 "/usr/lib/libcurl-gnutls.so.4"
+	#fi
+	dosym /usr/lib/libgnutls.so "/usr/lib/libgnutls.so.26"
+	#dosym /usr/lib/libgcrypt.so "/usr/lib/libgcrypt.so.11"
 }
 
 pkg_postinst() {
