@@ -2,13 +2,13 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
     <repo quality="experimental" status="unofficial">
-	<name>Ihavanna</name>
-	<description>Ihavanna organization of the gentoo overlay</description>
-	<homepage>http://github.com/Ihavanna/overlay</homepage>
+	<name>Ihavee</name>
+	<description>Ihavee organization of the gentoo overlay</description>
+	<homepage>http://github.com/Ihavee/overlay</homepage>
 	<owner type="project">
-	    <email>admin@ihavanna.org</email>
-	    <name>Ihavanna</name>
+	    <email>admin@havee.me</email>
+	    <name>Havee</name>
 	</owner>
-	<source type="git">git://github.com/Ihavanna/overlay.git</source>
+	<source type="git">git://github.com/Ihavee/overlay.git</source>
     </repo>
 </repositories>
