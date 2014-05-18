@@ -64,6 +64,11 @@ src_prepare() {
 	#rm -rf usr/share/upstart
 	sed -i -e '/MimeType/s/x-sogouskin/x-sogouskin\;/g' \
 		"${S}"/usr/share/applications/fcitx-ui-qimpanel.desktop
+
+	# libpng warning
+	for i in $(find ${S} -type f -name "*.png"); do
+		convert $i -strip $i
+	done
 }
 
 src_install() {
