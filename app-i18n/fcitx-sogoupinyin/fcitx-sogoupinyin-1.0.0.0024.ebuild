@@ -8,8 +8,8 @@ inherit unpacker
 
 DESCRIPTION="Sogou Pinyin with Fcitx Wrapper."
 HOMEPAGE="http://pinyin.sogou.com/linux/"
-SRC_URI="amd64? ( http://download.ime.sogou.com/1399632797/sogou_pinyin_linux_${PV}_amd64.deb )
-	x86? ( http://download.ime.sogou.com/1399632797/sogou_pinyin_linux_${PV}_i386.deb )"
+SRC_URI="amd64? ( http://download.ime.sogou.com/1400209655/sogou_pinyin_linux_${PV}_amd64.deb )
+	x86? ( http://download.ime.sogou.com/1400209655/sogou_pinyin_linux_${PV}_i386.deb )"
 
 LICENSE="Fcitx-Sogou"
 SLOT="0"
@@ -36,7 +36,7 @@ RDEPEND="
 	net-dns/libidn
 	net-nds/openldap
 	net-libs/libssh2
-	net-misc/curl[curl_ssl_gnutls,-curl_ssl_openssl]
+	net-misc/curl[-curl_ssl_gnutls,curl_ssl_openssl]
 	sys-apps/dbus
 	sys-apps/keyutils
 	sys-apps/util-linux
