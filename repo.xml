@@ -3,12 +3,12 @@
 <repositories xmlns="" version="1.0">
     <repo quality="experimental" status="unofficial">
 	<name>Ihavee</name>
-	<description>Ihavee organization of the gentoo overlay</description>
-	<homepage>http://github.com/Ihavee/overlay</homepage>
+	<description> the Havee's gentoo overlay</description>
+	<homepage>http://gitcafe.com/Havee/overlay</homepage>
 	<owner type="project">
-	    <email>admin@havee.me</email>
+	    <email>registerdedicated@yeah.net</email>
 	    <name>Havee</name>
 	</owner>
-	<source type="git">git://github.com/Ihavee/overlay.git</source>
+	<source type="git">git://gitcafe.com/Havee/overlay.git</source>
     </repo>
 </repositories>
