@@ -29,7 +29,7 @@ IUSE="+gtk"
 
 RDEPEND="dev-python/pycrypto
 	dev-lang/python:2.7[ssl]
-	dev-lang/pygeoip
+	dev-python/pygeoip
 	dev-libs/nss[utils]
 	>=dev-python/gevent-1.0
 	dev-python/pyopenssl
