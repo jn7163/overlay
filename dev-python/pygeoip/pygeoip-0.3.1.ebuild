@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/appliedsec/pygeoip"
 SRC_URI="https://github.com/appliedsec/pygeoip/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
-LICENSE="BSD"
+LICENSE="GPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
