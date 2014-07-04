@@ -8,8 +8,8 @@ inherit unpacker
 
 DESCRIPTION="Sogou Pinyin with Fcitx Wrapper."
 HOMEPAGE="http://pinyin.sogou.com/linux/"
-SRC_URI="amd64? ( http://download.ime.sogou.com/1400209655/sogou_pinyin_linux_${PV}_amd64.deb )
-	x86? ( http://download.ime.sogou.com/1400209655/sogou_pinyin_linux_${PV}_i386.deb )"
+SRC_URI="amd64? ( http://download.ime.sogou.com/1402921811/sogou_pinyin_linux_${PV}_amd64.deb )
+	x86? ( http://download.ime.sogou.com/1402921811/sogou_pinyin_linux_${PV}_i386.deb )"
 
 LICENSE="Fcitx-Sogou"
 SLOT="0"
