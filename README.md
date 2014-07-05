@@ -1,4 +1,4 @@
-`Ihavee` organization of the gentoo overlay
+The gentoo overlay for Havee
 
 #### Way:
 
