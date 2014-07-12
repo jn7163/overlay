@@ -4,7 +4,7 @@
     <repo quality="experimental" status="unofficial">
 	<name>Havee</name>
 	<description> the Havee's gentoo overlay</description>
-	<homepage>http://githubcom/Ihavee/overlay</homepage>
+	<homepage>http://github.com/Ihavee/overlay</homepage>
 	<owner type="project">
 	    <email>registerdedicated@yeah.net</email>
 	    <name>Havee</name>
