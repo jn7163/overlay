@@ -3,16 +3,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-SS_PID="--pidfile /var/run/shadowsocks.pid"
-SS_CONF="/etc/shadowsocks.json"
+ss_config="/etc/shadowsocks.json"
+
+ss_pidfile="/run/shadowsocks.pid"
+ss_command="/usr/bin/ss-local"
+ss_command_args="-c ${ss_config}"
 
 depend() {
     need net
 }
 
 checkconfig() {
-    if [ ! -f ${SS_CONF} ]; then
-        ewarn "${SS_CONF} does not exist."
+    if [ ! -f ${ss_config} ]; then
+        ewarn "${ss_config} does not exist."
     fi
 
     return 0
@@ -22,15 +25,14 @@ start() {
     checkconfig || return 1
 
     ebegin "Starting Shadowsocks"
-    start-stop-daemon --start --quiet \
-    $SS_PID --make-pid \
-    --exec /usr/bin/ss-local -- -c /etc/shadowsocks.json &
+    start-stop-daemon --start --exec ${ss_command} \
+    -- -c ${ss_config} -f ${ss_pidfile} 2>&1 &
     eend $?
 }
 
 stop() {
     ebegin "Stopping Shadowsocks"
-    start-stop-daemon --stop --quiet ${SS_PID}
+    start-stop-daemon --stop --pidfile ${ss_pidfile}
     eend $?
 }
 
