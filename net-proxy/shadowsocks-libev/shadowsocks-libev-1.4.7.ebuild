@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/madeye/shadowsocks-libev"
 
 MY_PV="v${PV}"
 SRC_URI="https://github.com/madeye/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -19,11 +20,6 @@ IUSE="debug"
 
 DEPEND="dev-libs/openssl"
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-tcp-fastopen-runtime-checking.patch"
-	eautoreconf
-}
 
 src_configure() {
 	econf $(use_enable debug assert)
