@@ -21,8 +21,22 @@ IUSE="debug"
 DEPEND="dev-libs/openssl"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	cd ${S}
+	rm -r libev
+	sed -e 's|libev/Makefile||' \
+	-e 's|m4_include(\[libev/libev.m4\])||' \
+	-i configure.ac
+	sed -e 's| libev | |' \
+	-i Makefile.am
+	sed -e 's|\$(top_builddir)/libev/libev.la||' \
+	-e 's|-I\$(top_srcdir)/libev|-lev -lm|' \
+	-i src/Makefile.am
+}
+
 src_configure() {
-	econf $(use_enable debug assert)
+	cd ${S}; ./autogen.sh || die
+	econf $(use_enable debug)
 }
 
 src_install() {
