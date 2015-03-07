@@ -10,10 +10,10 @@ inherit nsplugins versionator
 #MY_PV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="unionpay security control plugin"
-HOMEPAGE="https://online.unionpay.com/"
+HOMEPAGE="https://www.95516.com/"
 KEYWORDS="~amd64 ~x86"
-SRC_URI="x86? ( ${HOMEPAGE}/mer/resources/js/ocx/UPEditorLinux.tar.bz2 )
-	amd64? ( ${HOMEPAGE}/mer/resources/js/ocx/UPEditorLinux64.tar.bz2  )"
+SRC_URI="x86? ( https://user.95516.com/ctrl/UPEditorLinux_2.tar.gz )
+	amd64? ( https://user.95516.com/ctrl/UPEditorLinux64_2.tar.gz  )"
 
 LICENSE="unknown"
 RESTRICT="strip mirror"
