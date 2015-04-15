@@ -13,16 +13,17 @@ RESTRICT="mirror"
 
 IUSE=""
 
-RDEPEND=">dev-libs/botan-1.10
+RDEPEND="dev-libs/sni-qt
 	net-proxy/libQtShadowsocks
-	dev-qt/qtcore:5
-	dev-qt/qtnetwork
-	dev-qt/qtconcurrent
-	dev-qt/qtdbus:5
 	media-gfx/zbar
-	media-gfx/qrencode
-	dev-libs/libappindicator"
-DEPEND="${RDEPEND}"
+	media-gfx/qrencode"
+DEPEND="${RDEPEND}
+	>dev-libs/botan-1.10
+	dev-libs/libappindicator
+	dev-qt/qtconcurrent
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtnetwork"
 
 S="${WORKDIR}/${P}"
 
