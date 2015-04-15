@@ -20,6 +20,7 @@ RDEPEND="dev-libs/sni-qt
 DEPEND="${RDEPEND}
 	>dev-libs/botan-1.10
 	dev-libs/libappindicator
+	dev-qt/qtconcurrent
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtnetwork"
