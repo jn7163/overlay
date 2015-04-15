@@ -13,10 +13,9 @@ RESTRICT="mirror"
 
 IUSE=""
 
-RDEPEND=">dev-libs/botan-1.10
+DEPEND=">dev-libs/botan-1.10
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork
 	dev-qt/qtconcurrent"
-DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P}"
