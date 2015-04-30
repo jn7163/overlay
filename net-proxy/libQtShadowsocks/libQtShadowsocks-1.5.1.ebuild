@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 
 IUSE=""
 
-DEPEND=">dev-libs/botan-1.10
+RDEPEND=">dev-libs/botan-1.10
 	dev-qt/qtconcurrent
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork"
