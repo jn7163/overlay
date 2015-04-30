@@ -11,6 +11,8 @@ KEYWORDS="~amd64 ~x86"
 SRC_URI="https://github.com/librehat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
+LICENSE="GPL-3"
+
 IUSE=""
 
 RDEPEND="dev-libs/sni-qt
