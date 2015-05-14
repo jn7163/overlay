@@ -4,8 +4,11 @@
 
 EAPI=5
 
+# MULTILIB_COMPAT=(abi_x86_32)
+
 inherit fdo-mime font unpacker versionator
 
+# multilib-build
 
 MY_PV="$(get_version_component_range 1-4)"
 MY_V="$(get_version_component_range 5)"
@@ -35,50 +38,48 @@ DESCRIPTION="WPS Office is an office productivity suite. This is an ALPHA
 package. Use it at your own risk."
 HOMEPAGE="http://linux.wps.cn/"
 
-SRC_URI="http://kdl.cc.ksosoft.com/wps-community/download/${MY_BRANCH}/${PN}_${MY_VV}_i386.deb"
+SRC_URI="x86? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_BRANCH}/${PN}_${MY_VV}_i386.deb )
+ amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_BRANCH}/${PN}_${MY_VV}_amd64.deb )"
 
 SLOT="0"
 RESTRICT="strip mirror"
 LICENSE="WPS-EULA"
-IUSE="+abi_x86_32 corefonts +sharedfonts"
-REQUIRED_USE="abi_x86_32"  # for now; will add abi_x86_64 once available
+IUSE="corefonts +sharedfonts"
+# REQUIRED_USE="abi_x86_32"  # for now; will add abi_x86_64 once available
 
 NATIVE_DEPEND="
 		app-arch/bzip2
 		dev-libs/expat
-		dev-libs/glib:2[abi_x86_32]
-		dev-libs/libffi[abi_x86_32]
-		dev-libs/libxml2:2[abi_x86_32]
-		media-libs/fontconfig:1.0[abi_x86_32]
-		media-libs/freetype:2[abi_x86_32]
-		media-libs/glu[abi_x86_32]
-		media-libs/gst-plugins-base:0.10[abi_x86_32]
-		media-libs/gstreamer:0.10[abi_x86_32]
-		media-libs/libpng:1.2[abi_x86_32]
-		virtual/opengl[abi_x86_32]
-		media-libs/tiff:3[abi_x86_32]
+		dev-libs/glib:2
+		dev-libs/libffi
+		dev-libs/libxml2:2
+		media-libs/fontconfig:1.0
+		media-libs/freetype:2
+		media-libs/glu
+		media-libs/gst-plugins-base:0.10
+		media-libs/gstreamer:0.10
+		media-libs/libpng:1.2
+		virtual/opengl
+		media-libs/tiff:3
 		sys-apps/util-linux
-		sys-libs/zlib[abi_x86_32]
-		x11-libs/libdrm[abi_x86_32]
-		x11-libs/libICE[abi_x86_32]
-		x11-libs/libSM[abi_x86_32]
-		x11-libs/libX11[abi_x86_32]
-		x11-libs/libXau[abi_x86_32]
-		x11-libs/libxcb[abi_x86_32]
-		x11-libs/libXdamage[abi_x86_32]
-		x11-libs/libXdmcp[abi_x86_32]
-		x11-libs/libXext[abi_x86_32]
-		x11-libs/libXfixes[abi_x86_32]
-		x11-libs/libXrender[abi_x86_32]
-		x11-libs/libXxf86vm[abi_x86_32]
-		media-libs/libmng[abi_x86_32]"
+		sys-libs/zlib
+		x11-libs/libdrm
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
+		x11-libs/libXau
+		x11-libs/libxcb
+		x11-libs/libXdamage
+		x11-libs/libXdmcp
+		x11-libs/libXext
+		x11-libs/libXfixes
+		x11-libs/libXrender
+		x11-libs/libXxf86vm
+		media-libs/libmng
+		net-print/cups"
 
 RDEPEND="
 	${NATIVE_DEPEND}
-	amd64? (
-			sys-devel/gcc[multilib]
-			sys-libs/glibc[multilib]
-	)
 	corefonts? ( media-fonts/corefonts )
 	net-nds/openldap
 	dev-db/sqlite:3"
