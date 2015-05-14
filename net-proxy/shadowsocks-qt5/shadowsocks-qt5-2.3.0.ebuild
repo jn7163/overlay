@@ -20,7 +20,7 @@ RDEPEND="dev-libs/sni-qt
 	media-gfx/zbar
 	media-gfx/qrencode"
 DEPEND="${RDEPEND}
-	>dev-libs/botan-1.10
+	>dev-libs/botan-1.10[threads]
 	dev-libs/libappindicator
 	dev-qt/qtconcurrent
 	dev-qt/qtcore:5
