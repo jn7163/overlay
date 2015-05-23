@@ -21,7 +21,6 @@ RDEPEND="dev-libs/sni-qt
 	media-gfx/qrencode"
 DEPEND="${RDEPEND}
 	>dev-libs/botan-1.10[threads]
-	dev-libs/libappindicator
 	dev-qt/qtconcurrent
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
