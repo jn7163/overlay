@@ -53,6 +53,7 @@ NATIVE_DEPEND="
 		dev-libs/glib:2
 		dev-libs/libffi
 		dev-libs/libxml2:2
+		dev-qt/qtwebkit:4
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
 		media-libs/glu
