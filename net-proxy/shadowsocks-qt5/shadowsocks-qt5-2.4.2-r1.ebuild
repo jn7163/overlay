@@ -12,7 +12,7 @@ SRC_URI="https://github.com/librehat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
-
+SLOT="0"
 IUSE=""
 
 RDEPEND="dev-libs/libappindicator:2

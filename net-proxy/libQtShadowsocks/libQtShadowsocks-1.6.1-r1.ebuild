@@ -12,7 +12,7 @@ SRC_URI="https://github.com/librehat/libQtShadowsocks/archive/v${PV}.tar.gz -> $
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
-
+SLOT="0"
 IUSE=""
 
 RDEPEND=">dev-libs/botan-1.10[threads]
