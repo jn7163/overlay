@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit qt5-build
+inherit qmake-utils
 
 DESCRIPTION="A lightweight and ultra-fast shadowsocks library written in C++/Qt"
 KEYWORDS="~amd64 ~x86"
@@ -19,5 +19,3 @@ RDEPEND=">dev-libs/botan-1.10[threads]
 	dev-qt/qtconcurrent
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork"
-
-S="${WORKDIR}/${P}"
