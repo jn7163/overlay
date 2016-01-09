@@ -22,7 +22,7 @@ DEPEND="
 	app-arch/bzip2
 	app-arch/lz4
 	dev-libs/glib:2[xattr]
-	dev-libs/libindicator:3
+	=dev-libs/libappindicator-12.10.0-r300
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/harfbuzz[graphite]
