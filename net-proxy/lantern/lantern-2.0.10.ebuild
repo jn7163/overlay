@@ -40,10 +40,15 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
+src_prepare() {
+	# lantern will update itself
+	rm ${S}/usr/lib/lantern/lantern.sh || die
+}
+
 src_install() {
 	insinto /
 	doins -r "${S}/usr"
-	fperms 0755 /usr/lib/lantern/lantern{.sh,-binary}
+	fperms 0755 /usr/lib/lantern/lantern-binary
 
 	insinto /usr/share/applications
 	doins "${FILESDIR}/lantern.desktop"
