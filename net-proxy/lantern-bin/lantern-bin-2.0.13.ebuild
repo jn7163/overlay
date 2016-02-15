@@ -44,7 +44,6 @@ src_install() {
 	insinto /
 	doins -r "${S}/usr"
 
-	#dosym /usr/bin/lantern "/usr/lib/lantern/lantern.sh"
 	fperms 0755 /usr/lib/lantern/lantern.sh
 
 	use systemd && systemd_dounit "${FILESDIR}/lantern-bin.service"
