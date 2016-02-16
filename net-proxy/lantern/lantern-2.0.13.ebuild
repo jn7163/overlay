@@ -52,15 +52,16 @@ src_prepare() {
 }
 
 src_compile() {
-	local logger_token="$(sed -n 's/^LOGGLY_TOKEN[[:space:]]*:=[[:space:]]\(.*\)$/\1/p' Makefile)"
+	local LOGGER_TOKEN="$(sed -n 's/^LOGGLY_TOKEN[[:space:]]*:=[[:space:]]\(.*\)$/\1/p' Makefile)"
 
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
 		GOOS=linux CGO_ENABLED=1 \
-		go build -a -v -x -o ${PN} \
+		go build -v -x -o ${PN} \
 		-ldflags="-w -X 'main.version=${PV}' \
 		-X 'main.revisionDate=${P_DATE}' \
 		-X 'main.buildDate=${P_DATE}' \
 		-X 'github.com/getlantern/flashlight.compileTimePackageVersion=${PV}' \
+		-X 'github.com/getlantern/flashlight/logging.logglyToken=${LOGGER_TOKEN}' \
 		-linkmode internal -extldflags '-static'" \
 		${EGO_PN}
 }
