@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="systemd"
 
 EGO_PN="github.com/getlantern/flashlight"
-P_DATE="20160214"
+RELEASE_DATE="20160214"
 
 DEPEND="
 	app-arch/bzip2
@@ -57,12 +57,12 @@ src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
 		GOOS=linux CGO_ENABLED=1 \
 		go build -v -x -o ${PN} \
-		-ldflags="-w -X 'main.version=${PV}' \
-		-X 'main.revisionDate=${P_DATE}' \
-		-X 'main.buildDate=${P_DATE}' \
-		-X 'github.com/getlantern/flashlight.compileTimePackageVersion=${PV}' \
-		-X 'github.com/getlantern/flashlight/logging.logglyToken=${LOGGER_TOKEN}' \
-		-linkmode internal -extldflags '-static'" \
+		-ldflags="-X main.Version=${PV} \
+		-X main.RevisionDate=${RELEASE_DATE} \
+		-X main.BuildDate=${RELEASE_DATE} \
+		-X main.compileTimePackageVersion=${PV} \
+		-X github.com/getlantern/flashlight/logging.logglyToken=${LOGGER_TOKEN} \
+		-linkmode internal -extldflags -static" \
 		${EGO_PN}
 }
 
