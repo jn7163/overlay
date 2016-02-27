@@ -36,8 +36,7 @@ DEPEND="
 	x11-base/xorg-server
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[X]"
-RDEPEND="${DEPEND}
-	!!net-proxy/lantern"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
