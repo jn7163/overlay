@@ -8,9 +8,10 @@ inherit gnome2-utils unpacker systemd
 
 DESCRIPTION="A free desktop application that delivers fast, reliable and secure access to the open Internet for users in censored regions."
 HOMEPAGE="https://github.com/getlantern/lantern"
+SHORTCOMMIT="50a596f"
 SRC_URI="
-	x86?   ( https://raw.githubusercontent.com/getlantern/lantern-binaries/efb817a11a401f677b1062cd03360f194ee89593/lantern-installer-32-bit.deb -> lantern-bin-${PV}.x86.deb )
-	amd64? ( https://raw.githubusercontent.com/getlantern/lantern-binaries/efb817a11a401f677b1062cd03360f194ee89593/lantern-installer-64-bit.deb -> lantern-bin-${PV}.amd64.deb )"
+	x86? ( https://github.com/getlantern/lantern-binaries/raw/${SHORTCOMMIT}/lantern-installer-64-bit.deb -> lantern-bin-${PV}.x86.deb )
+	amd64? ( https://github.com/getlantern/lantern-binaries/raw/${SHORTCOMMIT}/lantern-installer-64-bit.deb -> lantern-bin-${PV}.amd64.deb )"
 
 SLOT="0"
 RESTRICT="mirror"
